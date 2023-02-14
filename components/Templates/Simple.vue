@@ -1,5 +1,13 @@
 <template>
   <main class="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
+    <ul class="space-y-2">
+      <open-house-time
+        v-for="(time, id) in acc.times"
+        :date="time.date"
+        :timeRange="time.timeRange"
+        :key="id"
+      />
+    </ul>
     <div class="text-center">
       <div
         v-if="acc.i"
@@ -10,8 +18,11 @@
       <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-slate-800">
         {{ acc.n }}
       </h1>
-      <p v-if="acc.d" class="text-sm mt-2 text-slate-600">
-        {{ acc.d }}
+      <p v-if="acc.license" class="text-sm mt-2 text-slate-600">
+        {{ acc.license }}
+      </p>
+      <p v-if="acc.broker" class="text-sm mt-2 text-slate-600">
+        {{ acc.broker }}
       </p>
     </div>
     <div
@@ -23,29 +34,19 @@
           <icon name="ph:facebook-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.t" class="p-1">
-        <a :href="acc.t" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
       <span v-if="acc.ig" class="p-1">
         <a :href="acc.ig" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.m" class="p-1">
-        <a :href="acc.m" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:envelope-duotone" class="h-6 w-6" />
+      <span v-if="acc.t" class="p-1">
+        <a :href="acc.t" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.tg" class="p-1">
-        <a :href="acc.tg" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:telegram-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.w" class="p-1">
-        <a :href="`https://wa.me/${acc.w}`" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:whatsapp-logo-duotone" class="h-6 w-6" />
+      <span v-if="acc.l" class="p-1">
+        <a :href="acc.l" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
       <span v-if="acc.y" class="p-1">
@@ -54,30 +55,20 @@
         </a>
       </span>
       <span v-if="acc.e" class="p-1">
-        <a :href="`mailto:${acc.e}`" target="_blank" rel="noopener | noreferrer">
+        <a
+          :href="`mailto:${acc.e}`"
+          target="_blank"
+          rel="noopener | noreferrer"
+        >
           <icon name="ph:envelope-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.gh" class="p-1">
-        <a :href="acc.gh" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:github-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.l" class="p-1">
-        <a :href="acc.l" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
+      <span v-if="acc.p" class="p-1">
+        <a :href="`tel:${acc.p}`" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:phone-duotone" class="h-6 w-6" />
         </a>
       </span>
     </div>
-    <ul class="space-y-2">
-      <ExternalLink
-        v-for="(link, id) in acc.ls"
-        :label="link.l"
-        :icon="link.i"
-        :url="link.u"
-        :key="id"
-      />
-    </ul>
   </main>
 </template>
 <script setup>
@@ -91,15 +82,12 @@ const props = defineProps({
 const allSocialLinksAreEmpty = computed(() => {
   return (
     !props.acc.f &&
-    !props.acc.t &&
     !props.acc.ig &&
-    !props.acc.m &&
-    !props.acc.tg &&
-    !props.acc.w &&
+    !props.acc.t &&
+    !props.acc.l &&
     !props.acc.y &&
     !props.acc.e &&
-    !props.acc.gh &&
-    !props.acc.l
+    !props.acc.p
   );
 });
 </script>

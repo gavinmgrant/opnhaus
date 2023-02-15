@@ -1,7 +1,7 @@
 <template>
   <base-form-section
     title="Links"
-    description="How can prospects reach you?"
+    description="Enter your contact info and social links"
   >
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="grid grid-cols-1 gap-4 bg-white px-4 py-5 sm:p-6">

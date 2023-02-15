@@ -1,5 +1,40 @@
 <template>
-  <main class="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
+  <main class="p-4 bg-white h-full w-full pt-6 max-w-lg mx-auto text-slate-800">
+    <h1
+      v-if="acc.propertyPhoto"
+      class="text-center text-2xl font-semibold mb-2"
+    >
+      Open House
+    </h1>
+    <div v-if="acc.propertyPhoto" class="w-full mb-2">
+      <img
+        :src="acc.propertyPhoto"
+        alt="Property photo"
+        class="h-full w-full object-cover rounded-lg"
+      />
+    </div>
+    <h1 v-if="acc.address" class="text-center text-md font-medium mb-2">
+      {{ acc.address }}
+    </h1>
+    <div
+      v-if="acc.beds && acc.baths"
+      class="flex items-center justify-center mb-4 text-md font-medium"
+    >
+      <icon name="material-symbols:bedroom-child" class="h-6 w-6" /><span
+        class="ml-1"
+        >{{ acc.beds }} bed</span
+      >
+      <icon name="material-symbols:bathroom" class="h-6 w-6 ml-4" /><span
+        class="ml-1"
+        >{{ acc.baths }} bath</span
+      >
+    </div>
+    <h1
+      v-if="acc.times.length > 0"
+      class="text-center text-2xl font-semibold mt-8 mb-3"
+    >
+      When
+    </h1>
     <ul class="space-y-2">
       <open-house-time
         v-for="(time, id) in acc.times"
@@ -8,22 +43,21 @@
         :key="id"
       />
     </ul>
-    <div class="text-center">
-      <div
-        v-if="acc.i"
-        class="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto"
-      >
+    <div class="flex items-center justify-center mt-8">
+      <div v-if="acc.i" class="h-20 w-20 rounded-full overflow-hidden">
         <img :src="acc.i" alt="name" class="h-full w-full object-cover" />
       </div>
-      <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-slate-800">
-        {{ acc.n }}
-      </h1>
-      <p v-if="acc.license" class="text-sm mt-2 text-slate-600">
-        {{ acc.license }}
-      </p>
-      <p v-if="acc.broker" class="text-sm mt-2 text-slate-600">
-        {{ acc.broker }}
-      </p>
+      <div class="m-4">
+        <h1 v-if="acc.n" class="text-lg font-semibold">
+          {{ acc.n }}
+        </h1>
+        <p v-if="acc.license" class="text-sm text-slate-600">
+          {{ acc.license }}
+        </p>
+        <p v-if="acc.broker" class="text-sm text-slate-600">
+          {{ acc.broker }}
+        </p>
+      </div>
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"

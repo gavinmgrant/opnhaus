@@ -2,6 +2,14 @@
   <div class="h-screen grid grid-cols-3 divide-x">
     <div class="col-span-2 h-screen flex flex-col bg-slate-100">
       <div class="flex-1 overflow-y-auto p-8">
+        <app-form-property
+          v-model:property="data.property"
+          v-model:propertyPhoto="data.propertyPhoto"
+          v-model:address="data.address"
+          v-model:beds="data.beds"
+          v-model:baths="data.baths"
+        />
+        <app-form-hr />
         <app-form-times v-model="data.times" />
         <app-form-hr />
         <app-form-profile
@@ -21,21 +29,24 @@
           v-model:phone="data.p"
         />
       </div>
-      <div class="border-t bg-white flex items-center">
-        <button
-          @click="prefillDemoData"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-        >
-          <span> Autofill with example data </span>
-          <icon name="ion:wand" class="h-4 w-4" />
-        </button>
-        <button
-          @click="publish"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-        >
-          <span> Publish </span>
-          <icon name="ph:paper-plane-tilt-bold" class="h-4 w-4" />
-        </button>
+      <div class="border-t bg-white flex items-center justify-between">
+        <h1 class="pl-4 text-3xl font-bold text-slate-800">opn.haus</h1>
+        <div class="flex">
+          <button
+            @click="prefillDemoData"
+            class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+          >
+            <span> Autofill with example data </span>
+            <icon name="ion:wand" class="h-4 w-4" />
+          </button>
+          <button
+            @click="publish"
+            class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+          >
+            <span> Publish </span>
+            <icon name="fluent:send-16-filled" class="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </div>
     <app-form-preview :data="data" />
@@ -45,6 +56,11 @@
 <script setup>
 import { encodeData } from "../utils/transformer";
 const data = ref({
+  property: "",
+  propertyPhoto: "",
+  address: "",
+  beds: "",
+  baths: "",
   n: "",
   license: "",
   broker: "",
@@ -73,6 +89,8 @@ let currentDate = `${year}-${month.length === 1 ? "0" + month : month}-${
 
 const prefillDemoData = () => {
   data.value = {
+    property:
+      "https://www.realtor.com/realestateandhomes-detail/8025-Rubicon-Way_San-Diego_CA_92126_M99783-38819?property_id=9978338819&from=ab_mixed_view_card",
     n: "Mark Mendez",
     license: "DRE#: 01974201",
     broker: "Compass",

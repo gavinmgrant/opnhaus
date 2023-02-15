@@ -9,6 +9,7 @@
           {{ description }}
         </p>
         <slot name="helpertext" />
+        <slot name="toggle" />
       </div>
     </div>
     <div class="mt-5 md:col-span-2 md:mt-0 relative">

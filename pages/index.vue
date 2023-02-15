@@ -2,22 +2,25 @@
   <div class="h-screen grid grid-cols-3 divide-x">
     <div class="col-span-2 h-screen flex flex-col bg-slate-100">
       <div class="flex-1 overflow-y-auto p-8">
+        <app-form-profile
+          v-model:agent="data.agent"
+          v-model:name="data.name"
+          v-model:license="data.license"
+          v-model:broker="data.broker"
+          v-model:image="data.i"
+          v-model:agentError="data.agentError"
+        />
+        <app-form-hr />
         <app-form-property
           v-model:property="data.property"
           v-model:propertyPhoto="data.propertyPhoto"
           v-model:address="data.address"
           v-model:beds="data.beds"
           v-model:baths="data.baths"
+          v-model:propertyError="data.propertyError"
         />
         <app-form-hr />
         <app-form-times v-model="data.times" />
-        <app-form-hr />
-        <app-form-profile
-          v-model:name="data.n"
-          v-model:license="data.license"
-          v-model:broker="data.broker"
-          v-model:image="data.i"
-        />
         <app-form-hr />
         <app-form-social-links
           v-model:facebook="data.f"
@@ -31,22 +34,13 @@
       </div>
       <div class="border-t bg-white flex items-center justify-between">
         <h1 class="pl-4 text-3xl font-bold text-slate-800">opn.haus</h1>
-        <div class="flex">
-          <button
-            @click="prefillDemoData"
-            class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-          >
-            <span> Autofill with example data </span>
-            <icon name="ion:wand" class="h-4 w-4" />
-          </button>
-          <button
-            @click="publish"
-            class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-          >
-            <span> Publish </span>
-            <icon name="fluent:send-16-filled" class="h-4 w-4" />
-          </button>
-        </div>
+        <button
+          @click="publish"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-white text-slate-700"
+        >
+          <span>Create Link</span>
+          <icon name="fluent:send-16-filled" class="h-5 w-5" />
+        </button>
       </div>
     </div>
     <app-form-preview :data="data" />
@@ -57,22 +51,22 @@
 import { encodeData } from "../utils/transformer";
 const data = ref({
   property: "",
+  propertyError: "",
   propertyPhoto: "",
   address: "",
   beds: "",
   baths: "",
-  n: "",
+  agent: "",
+  agentError: "",
+  name: "",
   license: "",
   broker: "",
   i: "",
   f: "",
   t: "",
   ig: "",
-  gh: "",
-  tg: "",
   l: "",
   e: "",
-  w: "",
   y: "",
   p: "",
   times: [],
@@ -91,7 +85,7 @@ const prefillDemoData = () => {
   data.value = {
     property:
       "https://www.realtor.com/realestateandhomes-detail/8025-Rubicon-Way_San-Diego_CA_92126_M99783-38819?property_id=9978338819&from=ab_mixed_view_card",
-    n: "Mark Mendez",
+    name: "Mark Mendez",
     license: "DRE#: 01974201",
     broker: "Compass",
     i: "https://www.compass.com/m3/e2d32288f56f0ca76b7fa1707640fcccf90f2be9/300x300.jpg",

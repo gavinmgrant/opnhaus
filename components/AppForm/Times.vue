@@ -1,7 +1,7 @@
 <template>
   <base-form-section
     title="Dates and Times"
-    description="Enter when your open houses will be"
+    description="Enter your open houses times"
   >
     <draggable
       :list="modelValue"

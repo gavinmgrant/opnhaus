@@ -12,12 +12,14 @@ export default defineEventHandler(async (event) => {
     const meta = $(".property-meta").text();
     const bedArray = meta.split("bed");
     const bathArray = bedArray[1].split("bath");
+    const beds = bedArray[0];
+    const baths = bathArray[0];
 
     return {
       photoUrl,
       address,
-      beds: bedArray[0],
-      baths: bathArray[0],
+      beds,
+      baths,
     };
   } catch (e) {
     console.log("Error fetching property details: ", e);

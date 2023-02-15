@@ -45,11 +45,11 @@
     </ul>
     <div class="flex items-center justify-center mt-8">
       <div v-if="acc.i" class="h-20 w-20 rounded-full overflow-hidden">
-        <img :src="acc.i" alt="name" class="h-full w-full object-cover" />
+        <img :src="acc.i" alt="Agent name" class="h-full w-full object-cover" />
       </div>
       <div class="m-4">
-        <h1 v-if="acc.n" class="text-lg font-semibold">
-          {{ acc.n }}
+        <h1 v-if="acc.name" class="text-lg font-semibold">
+          {{ acc.name }}
         </h1>
         <p v-if="acc.license" class="text-sm text-slate-600">
           {{ acc.license }}

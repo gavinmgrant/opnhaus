@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen grid grid-cols-3 divide-x">
-    <div class="col-span-2 h-screen flex flex-col bg-slate-100">
-      <div class="flex-1 overflow-y-auto p-8">
+    <div class="col-span-3 lg:col-span-2 h-screen flex flex-col bg-slate-100 z-20">
+      <div class="flex-1 overflow-y-auto p-4">
         <app-form-profile
           v-model:agent="data.agent"
           v-model:name="data.name"
@@ -32,11 +32,11 @@
           v-model:phone="data.p"
         />
       </div>
-      <div class="border-t bg-white flex items-center justify-between">
-        <h1 class="pl-4 text-3xl font-bold text-slate-800">opn.haus</h1>
+      <div class="border-t bg-white flex items-center justify-between p-4">
+        <h1 class="text-3xl font-bold text-slate-800">OpnHaus</h1>
         <button
           @click="publish"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-white text-slate-700"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />
@@ -46,9 +46,20 @@
     <app-form-preview :data="data" />
   </div>
 </template>
-
 <script setup>
 import { encodeData } from "../utils/transformer";
+
+useHead({
+  title: "OpnHaus",
+  meta: [
+    {
+      name: "description",
+      content:
+        "A link-in-bio app for real estate agents promoting their open house. Design and developed by Gavin Grant.",
+    },
+  ],
+});
+
 const data = ref({
   property: "",
   propertyError: "",

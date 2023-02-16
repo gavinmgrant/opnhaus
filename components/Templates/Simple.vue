@@ -43,11 +43,11 @@
         :key="id"
       />
     </ul>
-    <div class="flex items-center justify-center mt-8">
-      <div v-if="acc.i" class="h-20 w-20 rounded-full overflow-hidden">
+    <div class="flex items-center justify-center mt-12">
+      <div v-if="acc.i" class="h-20 w-20 rounded-full overflow-hidden flex-none">
         <img :src="acc.i" alt="Agent name" class="h-full w-full object-cover" />
       </div>
-      <div class="m-4">
+      <div class="m-4 shrink">
         <h1 v-if="acc.name" class="text-lg font-semibold">
           {{ acc.name }}
         </h1>
@@ -111,6 +111,22 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+});
+
+const metaTitle = props.acc.name + " | OpnHaus";
+const metaDescription =
+  "Visit my open House at " +
+  props.acc.address +
+  " presented by" +
+  props.acc.name +
+  " | Powered by OpnHaus";
+
+useServerSeoMeta({
+  title: metaTitle,
+  ogTitle: metaTitle,
+  description: metaDescription,
+  ogDescription: metaDescription,
+  ogImage: props.acc.propertyPhoto,
 });
 
 const allSocialLinksAreEmpty = computed(() => {

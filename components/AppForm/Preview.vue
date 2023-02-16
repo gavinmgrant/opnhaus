@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen grid place-items-center">
+  <div class="h-screen w-screen lg:w-auto flex justify-center items-center">
     <div
       class="h-[729px] w-[340px] overflow-y-auto rounded-[3rem] ring-8 ring-slate-800 overflow-hidden"
     >

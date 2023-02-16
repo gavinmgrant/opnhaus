@@ -19,7 +19,7 @@
       <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
         <div class="flex-grow col-span-6 sm:col-span-3">
           <label for="agent-url" class="block text-sm font-medium text-gray-700"
-            >Realtor.com Agent URL (will autofill info below)</label
+            >Realtor.com Agent URL (enter to autofill details below)</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
             <input

@@ -9,9 +9,10 @@ export default defineEventHandler(async (event) => {
     const $ = cheerio.load(htmlString);
     const agentName = $(".profile-Tiltle-main").text();
     const agentPhotoUrl = $(".profile-img img").attr("src");
-    const license = $(".profile-Tiltle-sub").first().text();
-    const brokerArray = $(".profile-Tiltle-sub").text().split(license);
-    const broker = brokerArray[1];
+    const firstSubtitle = $(".profile-Tiltle-sub").first().text();
+    const subtitleArray = $(".profile-Tiltle-sub").text().split(firstSubtitle);
+    const broker = !subtitleArray[1] ? firstSubtitle : subtitleArray[1];
+    const license = subtitleArray[1] ? firstSubtitle : "";
 
     return {
       agentName,

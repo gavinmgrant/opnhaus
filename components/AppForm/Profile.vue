@@ -47,7 +47,7 @@
 
         <app-form-toggle
           text="Edit agent details"
-          :toggleOn="this.toggleOn"
+          :toggleOn="toggleOn"
           @click="handleToggle"
         />
 

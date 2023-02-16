@@ -49,7 +49,7 @@
 
         <app-form-toggle
           text="Edit property details"
-          :toggleOn="this.toggleOn"
+          :toggleOn="toggleOn"
           @click="handleToggle"
         />
 

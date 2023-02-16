@@ -50,6 +50,7 @@
                     type="time"
                     name="start-time"
                     id="start-time"
+                    step="900"
                     v-model="time.startTime"
                  
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -65,6 +66,7 @@
                     type="time"
                     name="end-time"
                     id="end-time"
+                    step="900"
                     v-model="time.endTime"
                  
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -100,11 +102,21 @@ const emit = defineEmits(["update:modelValue"]);
 const props = defineProps({
   modelValue: Array,
 });
+
+const date = new Date();
+
+let day = date.getDate().toString();
+let month = (date.getMonth() + 1).toString();
+let year = date.getFullYear().toString();
+let currentDate = `${year}-${month.length === 1 ? "0" + month : month}-${
+  day.length === 1 ? "0" + day : day
+}`;
+
 const appendTime = () => {
   props.modelValue.push({
-    date: "",
-    startTime: "",
-    endTime: "",
+    date: currentDate,
+    startTime: "13:00",
+    endTime: "16:00",
   });
   emit("update:modelValue", props.modelValue);
 };

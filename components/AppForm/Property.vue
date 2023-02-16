@@ -32,7 +32,7 @@
             />
             <button
               @click="fetchProperty(property)"
-              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500"
+              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700 disabled:hover:cursor-not-allowed"
               :disabled="!property"
             >
               <span class="mr-2">Autofill</span>

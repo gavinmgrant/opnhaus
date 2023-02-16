@@ -2,7 +2,7 @@
   <div class="lg:grid lg:grid-cols-3 lg:gap-6">
     <div class="lg:col-span-1">
       <div class="px-4 sm:px-0 sticky top-0">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">
+        <h3 class="text-xl font-semibold leading-6 text-gray-900">
           {{ title }}
         </h3>
         <p class="mt-1 text-sm text-gray-600">

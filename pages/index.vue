@@ -34,11 +34,14 @@
           v-model:phone="data.p"
         />
       </div>
-      <div class="border-t bg-white flex items-center justify-between p-4">
+      <div
+        class="relative bottom-0 left-0 w-full border-t bg-white flex items-center justify-between p-4"
+      >
         <h1 class="text-3xl font-bold text-slate-800">OpnHaus</h1>
         <button
           @click="publish"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full"
+          :disabled="data.times.length < 1 || !data.address || !data.name"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full disabled:opacity-75 disabled:hover:cursor-not-allowed active:bg-slate-800"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />
@@ -85,19 +88,10 @@ const data = ref({
   times: [],
 });
 
-const date = new Date();
-
-let day = date.getDate().toString();
-let month = (date.getMonth() + 1).toString();
-let year = date.getFullYear().toString();
-let currentDate = `${year}-${month.length === 1 ? "0" + month : month}-${
-  day.length === 1 ? "0" + day : day
-}`;
-
 const publish = () => {
   const url = `${window.location.origin}/1?data=${encodeData(data.value)}`;
   navigator.clipboard.writeText(url).then(() => {
-    alert("Link copied to clipboard");
+    alert("Your OpnHaus link is copied to clipboard!");
   });
 };
 </script>

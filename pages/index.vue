@@ -1,6 +1,8 @@
 <template>
   <div class="h-screen grid grid-cols-3 divide-x">
-    <div class="col-span-3 lg:col-span-2 h-screen flex flex-col bg-slate-100 z-20">
+    <div
+      class="col-span-3 lg:col-span-2 h-screen flex flex-col bg-slate-100 z-20"
+    >
       <div class="flex-1 overflow-y-auto p-4">
         <app-form-profile
           v-model:agent="data.agent"
@@ -55,7 +57,7 @@ useHead({
     {
       name: "description",
       content:
-        "A link-in-bio app for real estate agents promoting their open house. Design and developed by Gavin Grant.",
+        "An app for real estate agents to create beautiful landing pages for their open houses. Design and developed by Gavin Grant.",
     },
   ],
 });
@@ -91,30 +93,6 @@ let year = date.getFullYear().toString();
 let currentDate = `${year}-${month.length === 1 ? "0" + month : month}-${
   day.length === 1 ? "0" + day : day
 }`;
-
-const prefillDemoData = () => {
-  data.value = {
-    property:
-      "https://www.realtor.com/realestateandhomes-detail/8025-Rubicon-Way_San-Diego_CA_92126_M99783-38819?property_id=9978338819&from=ab_mixed_view_card",
-    name: "Mark Mendez",
-    license: "DRE#: 01974201",
-    broker: "Compass",
-    i: "https://www.compass.com/m3/e2d32288f56f0ca76b7fa1707640fcccf90f2be9/300x300.jpg",
-    f: "https://www.fb.com/profile.php?id=100009683352338",
-    t: "https://twitter.com/markhmendez",
-    ig: "https://www.instagram.com/markhmendez",
-    e: "mark.mendez@compass.com",
-    p: "(310) 621-2531",
-    y: "https://www.youtube.com/@markhmendez",
-    l: "https://www.linkedin.com/in/markhmendez",
-    times: [
-      {
-        date: currentDate,
-        timeRange: "12pm - 3pm",
-      },
-    ],
-  };
-};
 
 const publish = () => {
   const url = `${window.location.origin}/1?data=${encodeData(data.value)}`;

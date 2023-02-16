@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.8",
+    "add-to-calendar-button": "^2.1.2",
     "cheerio": "^1.0.0-rc.12",
+    "date-fns": "^2.29.3",
     "floating-vue": "^2.0.0-beta.20",
     "js-base64": "^3.7.4",
     "vuedraggable": "^4.1.0"

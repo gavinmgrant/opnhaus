@@ -1,6 +1,6 @@
 <template>
   <base-form-section
-    title="Dates and Times"
+    title="Times"
     description="Enter your open houses times"
   >
     <draggable
@@ -14,18 +14,18 @@
           <button class="absolute top-2 -left-8">
             <icon
               name="radix-icons:drag-handle-dots-2"
-              class="h-6 w-6 text-slate-500 drag-handle"
+              class="h-6 w-6 text-slate-700 drag-handle"
             />
           </button>
           <button
             @click="removeTime(time)"
-            class="hidden group-hover:flex items-center justify-center h-6 w-6 rounded-full bg-slate-300 text-slate-600 absolute -right-3 -top-3"
+            class="hidden group-hover:flex items-center justify-center h-6 w-6 rounded-full bg-slate-700 text-white absolute -right-3 -top-3"
           >
-            <icon name="fluent:dismiss-24-regular" class="h-4 w-4" />
+            <icon name="fluent:dismiss-24-regular" class="h-5 w-5" />
           </button>
           <div class="shadow sm:overflow-hidden sm:rounded-md">
             <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-3 gap-4">
                 <div>
                   <label
                     for="date"
@@ -44,21 +44,36 @@
                   <label
                     for="time"
                     class="block text-sm font-medium text-gray-700"
-                    >Time</label
+                    >Start Time</label
                   >
                   <input
-                    type="text"
-                    name="time"
-                    id="time"
-                    v-model="time.timeRange"
-                    placeholder="1pm - 4pm"
+                    type="time"
+                    name="start-time"
+                    id="start-time"
+                    v-model="time.startTime"
+                 
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="time"
+                    class="block text-sm font-medium text-gray-700"
+                    >End Time</label
+                  >
+                  <input
+                    type="time"
+                    name="end-time"
+                    id="end-time"
+                    v-model="time.endTime"
+                 
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
               <p
                 class="mt-2 text-xs text-center text-slate-400"
-                v-if="!time.date || !time.timeRange"
+                v-if="!time.date || !time.startTime || !time.endTime"
               >
                 This will appear in preview once a date and time are added
               </p>
@@ -88,7 +103,8 @@ const props = defineProps({
 const appendTime = () => {
   props.modelValue.push({
     date: "",
-    timeRange: "",
+    startTime: "",
+    endTime: "",
   });
   emit("update:modelValue", props.modelValue);
 };

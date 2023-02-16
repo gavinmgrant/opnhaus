@@ -38,13 +38,19 @@
     <ul class="space-y-2">
       <open-house-time
         v-for="(time, id) in acc.times"
-        :date="time.date"
-        :timeRange="time.timeRange"
         :key="id"
+        :date="time.date"
+        :startTime="time.startTime"
+        :endTime="time.endTime"
+        :address="acc.address"
+        :name="acc.name"
       />
     </ul>
     <div class="flex items-center justify-center mt-12">
-      <div v-if="acc.i" class="h-20 w-20 rounded-full overflow-hidden flex-none">
+      <div
+        v-if="acc.i"
+        class="h-20 w-20 rounded-full overflow-hidden flex-none"
+      >
         <img :src="acc.i" alt="Agent name" class="h-full w-full object-cover" />
       </div>
       <div class="m-4 shrink">

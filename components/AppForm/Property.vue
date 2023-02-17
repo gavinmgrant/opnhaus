@@ -18,7 +18,8 @@
           <label
             for="property-url"
             class="block text-sm font-medium text-gray-700"
-            >Realtor.com Listing URL (enter to autofill details below)</label
+            >Realtor.com Listing URL (enter an ACTIVE listing to autofill
+            details)</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
             <input
@@ -32,18 +33,23 @@
             />
             <button
               @click="fetchProperty(property)"
-              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700 disabled:hover:cursor-not-allowed"
-              :disabled="!property"
+              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700"
             >
               <span class="mr-2">Autofill</span>
               <icon name="ion:wand" class="w-5 h-5" />
             </button>
           </div>
           <div
+            v-if="propertySuccess"
+            class="text-sm text-green-600 text-center mt-2"
+          >
+            {{ propertySuccess }}
+          </div>
+          <div
             v-if="propertyError"
             class="text-sm text-red-600 text-center mt-2"
           >
-            Can't locate this listing. Please enter an active listing URL.
+            {{ propertyError }}
           </div>
         </div>
 
@@ -133,33 +139,47 @@ export default {
 <script setup>
 const props = defineProps([
   "property",
+  "propertySuccess",
+  "propertyError",
   "propertyPhoto",
   "address",
   "beds",
   "baths",
-  "propertyError",
 ]);
 const emit = defineEmits([
+  "update:property",
   "update:propertyPhoto",
   "update:address",
   "update:beds",
   "update:baths",
+  "update:propertySuccess",
   "update:propertyError",
 ]);
-const fetchProperty = async (property) => {
+const fetchProperty = async (url) => {
   await $fetch("/api/property", {
     method: "POST",
-    body: property,
+    body: url,
   })
     .then((res) => {
       emit("update:propertyPhoto", res.photoUrl);
       emit("update:address", res.address);
       emit("update:beds", res.beds);
       emit("update:baths", res.baths);
+      emit(
+        "update:propertySuccess",
+        res.address
+          ? "🥳 Success! Your listing details have been added."
+          : "🤔 We didn't find any listing info here. Try another URL."
+      );
       emit("update:propertyError", "");
     })
-    .catch((error) => {
-      emit("update:propertyError", error);
+    .catch((err) => {
+      console.log("Error fetching listing data: ", err);
+      emit("update:propertySuccess", "");
+      emit(
+        "update:propertyError",
+        "❌ Sorry, we can't locate this listing. Please enter a valid URL."
+      );
     });
 };
 </script>

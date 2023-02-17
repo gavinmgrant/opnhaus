@@ -19,7 +19,7 @@
       <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
         <div class="flex-grow col-span-6 sm:col-span-3">
           <label for="agent-url" class="block text-sm font-medium text-gray-700"
-            >Realtor.com Agent URL (enter to autofill details below)</label
+            >Realtor.com Agent URL (enter to autofill details)</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
             <input
@@ -28,20 +28,24 @@
               id="agent-url"
               class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm z-10"
               placeholder="https://www.realtor.com/realestateagents/example"
-              :value="agent"
-              @input="$emit('update:agent', $event.target.value)"
+              v-model="state.agentUrl"
             />
             <button
-              @click="fetchAgent(agent)"
-              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700 disabled:hover:cursor-not-allowed"
-              :disabled="!agent"
+              @click="fetchAgent(state.agentUrl)"
+              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700"
             >
               <span class="mr-2">Autofill</span>
               <icon name="ion:wand" class="w-5 h-5" />
             </button>
           </div>
+          <div
+            v-if="agentSuccess"
+            class="text-sm text-green-600 text-center mt-2"
+          >
+            {{ agentSuccess }}
+          </div>
           <div v-if="agentError" class="text-sm text-red-600 text-center mt-2">
-            Can't locate your profile. Please enter a valid URL.
+            {{ agentError }}
           </div>
         </div>
 
@@ -60,8 +64,7 @@
             name="name"
             id="name"
             autocomplete="given-name"
-            :value="name"
-            @input="$emit('update:name', $event.target.value)"
+            v-model="state.name"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -73,8 +76,7 @@
             type="text"
             name="license"
             id="license"
-            :value="license"
-            @input="$emit('update:license', $event.target.value)"
+            v-model="state.license"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -86,8 +88,7 @@
             type="text"
             name="broker"
             id="broker"
-            :value="broker"
-            @input="$emit('update:broker', $event.target.value)"
+            v-model="state.broker"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -101,8 +102,7 @@
             id="photo-url"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder=""
-            :value="image"
-            @input="$emit('update:image', $event.target.value)"
+            v-model="state.image"
           />
         </div>
       </div>
@@ -124,35 +124,33 @@ export default {
 };
 </script>
 <script setup>
-const props = defineProps([
-  "agent",
-  "name",
-  "license",
-  "broker",
-  "image",
-  "agentError",
-]);
-const emit = defineEmits([
-  "update:name",
-  "update:license",
-  "update:broker",
-  "update:image",
-  "update:agentError",
-]);
-const fetchAgent = async (agent) => {
+const props = defineProps(["state", "agentSuccess", "agentError"]);
+const emit = defineEmits(["update:agentSuccess", "update:agentError"]);
+const fetchAgent = async (url) => {
   await $fetch("/api/agent", {
     method: "POST",
-    body: agent,
+    body: url,
   })
     .then((res) => {
-      emit("update:name", res.agentName);
-      emit("update:license", res.license);
-      emit("update:broker", res.broker);
-      emit("update:image", res.agentPhotoUrl);
+      props.state.name = res.agentName;
+      props.state.license = res.license;
+      props.state.broker = res.broker;
+      props.state.image = res.agentPhotoUrl;
+      emit(
+        "update:agentSuccess",
+        res.agentName
+          ? "🥳 Success! Your agent details have been added."
+          : "🤔 We didn't find any agent info here. Try another URL."
+      );
       emit("update:agentError", "");
     })
-    .catch((error) => {
-      emit("update:agentError", error);
+    .catch((err) => {
+      console.log("Error fetching agent data: ", err);
+      emit("update:agentSuccess", "");
+      emit(
+        "update:agentError",
+        "❌ Sorry, we can't locate your profile. Please enter a valid URL."
+      );
     });
 };
 </script>

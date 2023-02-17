@@ -19,8 +19,7 @@
               type="search"
               name="email"
               id="email"
-              :value="email"
-              @input="$emit('update:email', $event.target.value)"
+              v-model="state.email"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="agent@example.com"
             />
@@ -40,8 +39,7 @@
               type="search"
               name="phone"
               id="phone"
-              :value="phone"
-              @input="$emit('update:phone', $event.target.value)"
+              v-model="state.phone"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="(555) 123-4567"
             />
@@ -61,8 +59,7 @@
               type="search"
               name="facebook"
               id="facebook"
-              :value="facebook"
-              @input="$emit('update:facebook', $event.target.value)"
+              v-model="state.facebook"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://fb.com/agent"
             />
@@ -82,8 +79,7 @@
               type="search"
               name="instagram"
               id="instagram"
-              :value="instagram"
-              @input="$emit('update:instagram', $event.target.value)"
+              v-model="state.instagram"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://instagram.com/agent"
             />
@@ -103,8 +99,7 @@
               type="search"
               name="twitter"
               id="twitter"
-              :value="twitter"
-              @input="$emit('update:twitter', $event.target.value)"
+              v-model="state.twitter"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://twitter.com/agent"
             />
@@ -125,8 +120,7 @@
               type="search"
               name="linkedin"
               id="linkedin"
-              :value="linkedin"
-              @input="$emit('update:linkedin', $event.target.value)"
+              v-model="state.linkedin"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://www.linkedin.com/in/agent"
             />
@@ -146,8 +140,7 @@
               type="search"
               name="youtube"
               id="youtube"
-              :value="youtube"
-              @input="$emit('update:youtube', $event.target.value)"
+              v-model="state.youtube"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://www.youtube.com/@agent"
             />
@@ -158,13 +151,5 @@
   </base-form-section>
 </template>
 <script setup>
-const props = defineProps([
-  "facebook",
-  "instagram",
-  "twitter",
-  "linkedin",
-  "youtube",
-  "email",
-  "phone",
-]);
+const props = defineProps(["state"]);
 </script>

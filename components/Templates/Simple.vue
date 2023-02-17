@@ -48,64 +48,72 @@
     </ul>
     <div class="flex items-center justify-center mt-12">
       <div
-        v-if="acc.i"
+        v-if="state.image"
         class="h-20 w-20 rounded-full overflow-hidden flex-none"
       >
-        <img :src="acc.i" alt="Agent name" class="h-full w-full object-cover" />
+        <img
+          :src="state.image"
+          alt="Agent name"
+          class="h-full w-full object-cover"
+        />
       </div>
       <div class="m-4 shrink">
-        <h1 v-if="acc.name" class="text-lg font-semibold">
-          {{ acc.name }}
+        <h1 v-if="state.name" class="text-lg font-semibold">
+          {{ state.name }}
         </h1>
-        <p v-if="acc.license" class="text-sm text-slate-600">
-          {{ acc.license }}
+        <p v-if="state.license" class="text-sm text-slate-600">
+          {{ state.license }}
         </p>
-        <p v-if="acc.broker" class="text-sm text-slate-600">
-          {{ acc.broker }}
+        <p v-if="state.broker" class="text-sm text-slate-600">
+          {{ state.broker }}
         </p>
       </div>
     </div>
     <div
-      v-if="!allSocialLinksAreEmpty"
+      v-if="!allLinksAreEmpty"
       class="flex items-center justify-center flex-wrap"
     >
-      <span v-if="acc.f" class="p-1">
-        <a :href="acc.f" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:facebook-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.ig" class="p-1">
-        <a :href="acc.ig" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.t" class="p-1">
-        <a :href="acc.t" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.l" class="p-1">
-        <a :href="acc.l" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.y" class="p-1">
-        <a :href="acc.y" target="_blank" rel="noopener | noreferrer">
-          <icon name="ph:youtube-logo-duotone" class="h-6 w-6" />
-        </a>
-      </span>
-      <span v-if="acc.e" class="p-1">
+      <span v-if="state.email" class="p-1">
         <a
-          :href="`mailto:${acc.e}`"
+          :href="`mailto:${state.email}`"
           target="_blank"
           rel="noopener | noreferrer"
         >
           <icon name="ph:envelope-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.p" class="p-1">
-        <a :href="`tel:${acc.p}`" target="_blank" rel="noopener | noreferrer">
+      <span v-if="state.phone" class="p-1">
+        <a
+          :href="`tel:${state.phone}`"
+          target="_blank"
+          rel="noopener | noreferrer"
+        >
           <icon name="ph:phone-duotone" class="h-6 w-6" />
+        </a>
+      </span>
+      <span v-if="state.facebook" class="p-1">
+        <a :href="state.facebook" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:facebook-logo-duotone" class="h-6 w-6" />
+        </a>
+      </span>
+      <span v-if="state.instagram" class="p-1">
+        <a :href="state.instagram" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
+        </a>
+      </span>
+      <span v-if="state.twitter" class="p-1">
+        <a :href="state.twitter" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
+        </a>
+      </span>
+      <span v-if="state.linkedin" class="p-1">
+        <a :href="state.linkedin" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
+        </a>
+      </span>
+      <span v-if="state.youtube" class="p-1">
+        <a :href="state.youtube" target="_blank" rel="noopener | noreferrer">
+          <icon name="ph:youtube-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
     </div>
@@ -117,14 +125,18 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  state: {
+    type: Object,
+    required: true,
+  },
 });
 
-const metaTitle = props.acc.name + " | OpnHaus";
+const metaTitle = props.state.name + " | OpnHaus";
 const metaDescription =
   "Visit my open House at " +
   props.acc.address +
   " presented by" +
-  props.acc.name +
+  props.state.name +
   " | Powered by OpnHaus";
 
 useServerSeoMeta({
@@ -135,15 +147,15 @@ useServerSeoMeta({
   ogImage: props.acc.propertyPhoto,
 });
 
-const allSocialLinksAreEmpty = computed(() => {
+const allLinksAreEmpty = computed(() => {
   return (
-    !props.acc.f &&
-    !props.acc.ig &&
-    !props.acc.t &&
-    !props.acc.l &&
-    !props.acc.y &&
-    !props.acc.e &&
-    !props.acc.p
+    !props.state.email &&
+    !props.state.phone &&
+    !props.state.facebook &&
+    !props.state.instagram &&
+    !props.state.twitter &&
+    !props.state.linkedin &&
+    !props.state.youtube
   );
 });
 </script>

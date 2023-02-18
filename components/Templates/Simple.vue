@@ -162,7 +162,8 @@ const props = defineProps({
   },
 });
 
-const metaTitle = props.acc.agentData.name + " | Open House Landing Page by OpnHaus";
+const metaTitle =
+  props.acc.agentData.name + " " + "Open House Landing Page by OpnHaus";
 const metaDescription =
   "Visit my open House at " +
   props.acc.address +

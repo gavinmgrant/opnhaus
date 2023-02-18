@@ -1,5 +1,5 @@
 <template>
-  <main class="p-4 bg-white h-full w-full pt-6 max-w-lg mx-auto text-slate-800">
+  <main class="p-4 bg-white h-full w-full py-6 max-w-lg mx-auto text-slate-800">
     <section>
       <h1 class="text-center text-3xl font-semibold mb-2">Open House</h1>
       <div
@@ -139,7 +139,7 @@
         </div>
       </div>
     </section>
-    <section class="text-center mt-6">
+    <section class="text-center mt-6 pb-6">
       <a
         href="https://www.opn.haus/"
         target="_blank"

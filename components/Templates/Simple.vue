@@ -139,16 +139,16 @@
         </div>
       </div>
     </section>
-    <section class="text-center mt-8">
+    <section class="text-center mt-6">
       <a
         href="https://www.opn.haus/"
         target="_blank"
         rel="noopener | noreferrer"
       >
         <button
-          class="bg-slate-400 hover:bg-slate-500 text-white text-sm px-4 py-2 rounded-full transitions-all duration-300"
+          class="bg-slate-400 hover:bg-slate-500 text-white text-xs px-4 py-2 rounded-full transitions-all duration-300"
         >
-          powered by OpnHaus
+          Powered by OpnHaus
         </button>
       </a>
     </section>

@@ -5,7 +5,7 @@
         class="flex items-center p-1 rounded-lg bg-slate-50 shadow-lg"
       >
         <add-to-calendar-button
-          :name="'Open House by' + this.name"
+          :name="'Open House by' + name"
           options="'Apple','Google', 'Outlook.com'"
           :location="address"
           :startDate="date"

@@ -65,6 +65,7 @@
             id="name"
             autocomplete="given-name"
             v-model="state.name"
+            @input="$emit('update:name', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -77,6 +78,7 @@
             name="license"
             id="license"
             v-model="state.license"
+            @input="$emit('update:license', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -89,6 +91,7 @@
             name="broker"
             id="broker"
             v-model="state.broker"
+            @input="$emit('update:broker', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -100,9 +103,10 @@
             type="text"
             name="photo-url"
             id="photo-url"
-            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder=""
             v-model="state.image"
+            @input="$emit('update:image', $event.target.value)"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
       </div>
@@ -124,8 +128,23 @@ export default {
 };
 </script>
 <script setup>
-const props = defineProps(["state", "agentSuccess", "agentError"]);
-const emit = defineEmits(["update:agentSuccess", "update:agentError"]);
+const props = defineProps([
+  "state",
+  "name",
+  "license",
+  "broker",
+  "image",
+  "agentSuccess",
+  "agentError",
+]);
+const emit = defineEmits([
+  "update:name",
+  "update:license",
+  "update:broker",
+  "update:image",
+  "update:agentSuccess",
+  "update:agentError",
+]);
 const fetchAgent = async (url) => {
   await $fetch("/api/agent", {
     method: "POST",
@@ -136,6 +155,10 @@ const fetchAgent = async (url) => {
       props.state.license = res.license;
       props.state.broker = res.broker;
       props.state.image = res.agentPhotoUrl;
+      emit("update:name", res.agentName);
+      emit("update:license", res.license);
+      emit("update:broker", res.broker);
+      emit("update:image", res.agentPhotoUrl);
       emit(
         "update:agentSuccess",
         res.agentName

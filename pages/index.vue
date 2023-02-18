@@ -18,11 +18,24 @@
         <app-form-hr />
         <app-form-profile
           v-model:state="state"
+          v-model:name="data.agentData.name"
+          v-model:license="data.agentData.license"
+          v-model:broker="data.agentData.broker"
+          v-model:image="data.agentData.image"
           v-model:agentSuccess="data.agentSuccess"
           v-model:agentError="data.agentError"
         />
         <app-form-hr />
-        <app-form-social-links v-model:state="state" />
+        <app-form-social-links
+          v-model:state="state"
+          v-model:email="data.agentData.email"
+          v-model:phone="data.agentData.phone"
+          v-model:facebook="data.agentData.facebook"
+          v-model:instagram="data.agentData.instagram"
+          v-model:twitter="data.agentData.twitter"
+          v-model:linkedin="data.agentData.linkedin"
+          v-model:youtube="data.agentData.youtube"
+        />
       </div>
       <div
         class="relative bottom-0 left-0 w-full border-t bg-white flex items-center justify-between p-4"
@@ -38,7 +51,7 @@
         </button>
       </div>
     </div>
-    <app-form-preview :data="data" :state="state" />
+    <app-form-preview :data="data" />
   </div>
 </template>
 <script setup>
@@ -56,7 +69,7 @@ useHead({
   ],
 });
 
-const state = useLocalStorage("OpnHaus", {
+const agentData = {
   agentUrl: "",
   name: "",
   license: "",
@@ -69,7 +82,9 @@ const state = useLocalStorage("OpnHaus", {
   twitter: "",
   linkedin: "",
   youtube: "",
-});
+};
+
+const state = useLocalStorage("OpnHaus", agentData);
 
 const data = ref({
   property: "",
@@ -82,6 +97,7 @@ const data = ref({
   agentSuccess: "",
   agentError: "",
   times: [],
+  agentData: state.value,
 });
 
 const publish = () => {

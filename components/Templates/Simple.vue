@@ -43,29 +43,29 @@
         :startTime="time.startTime"
         :endTime="time.endTime"
         :address="acc.address"
-        :name="acc.name"
+        :name="acc.agentData.name"
       />
     </ul>
     <div class="flex items-center justify-center mt-12">
       <div
-        v-if="state.image"
+        v-if="acc.agentData.image"
         class="h-20 w-20 rounded-full overflow-hidden flex-none"
       >
         <img
-          :src="state.image"
+          :src="acc.agentData.image"
           alt="Agent name"
           class="h-full w-full object-cover"
         />
       </div>
       <div class="m-4 shrink">
-        <h1 v-if="state.name" class="text-lg font-semibold">
-          {{ state.name }}
+        <h1 v-if="acc.agentData.name" class="text-lg font-semibold">
+          {{ acc.agentData.name }}
         </h1>
-        <p v-if="state.license" class="text-sm text-slate-600">
-          {{ state.license }}
+        <p v-if="acc.agentData.license" class="text-sm text-slate-600">
+          {{ acc.agentData.license }}
         </p>
-        <p v-if="state.broker" class="text-sm text-slate-600">
-          {{ state.broker }}
+        <p v-if="acc.agentData.broker" class="text-sm text-slate-600">
+          {{ acc.agentData.broker }}
         </p>
       </div>
     </div>
@@ -73,46 +73,46 @@
       v-if="!allLinksAreEmpty"
       class="flex items-center justify-center flex-wrap"
     >
-      <span v-if="state.email" class="p-1">
+      <span v-if="acc.agentData.email" class="p-1">
         <a
-          :href="`mailto:${state.email}`"
+          :href="`mailto:${acc.agentData.email}`"
           target="_blank"
           rel="noopener | noreferrer"
         >
           <icon name="ph:envelope-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.phone" class="p-1">
+      <span v-if="acc.agentData.phone" class="p-1">
         <a
-          :href="`tel:${state.phone}`"
+          :href="`tel:${acc.agentData.phone}`"
           target="_blank"
           rel="noopener | noreferrer"
         >
           <icon name="ph:phone-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.facebook" class="p-1">
-        <a :href="state.facebook" target="_blank" rel="noopener | noreferrer">
+      <span v-if="acc.agentData.facebook" class="p-1">
+        <a :href="acc.agentData.facebook" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:facebook-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.instagram" class="p-1">
-        <a :href="state.instagram" target="_blank" rel="noopener | noreferrer">
+      <span v-if="acc.agentData.instagram" class="p-1">
+        <a :href="acc.agentData.instagram" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.twitter" class="p-1">
-        <a :href="state.twitter" target="_blank" rel="noopener | noreferrer">
+      <span v-if="acc.agentData.twitter" class="p-1">
+        <a :href="acc.agentData.twitter" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.linkedin" class="p-1">
-        <a :href="state.linkedin" target="_blank" rel="noopener | noreferrer">
+      <span v-if="acc.agentData.linkedin" class="p-1">
+        <a :href="acc.agentData.linkedin" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="state.youtube" class="p-1">
-        <a :href="state.youtube" target="_blank" rel="noopener | noreferrer">
+      <span v-if="acc.agentData.youtube" class="p-1">
+        <a :href="acc.agentData.youtube" target="_blank" rel="noopener | noreferrer">
           <icon name="ph:youtube-logo-duotone" class="h-6 w-6" />
         </a>
       </span>
@@ -125,18 +125,14 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  state: {
-    type: Object,
-    required: true,
-  },
 });
 
-const metaTitle = props.state.name + " | OpnHaus";
+const metaTitle = props.acc.agentData.name + " | OpnHaus";
 const metaDescription =
   "Visit my open House at " +
   props.acc.address +
   " presented by" +
-  props.state.name +
+  props.acc.agentData.name +
   " | Powered by OpnHaus";
 
 useServerSeoMeta({
@@ -149,13 +145,13 @@ useServerSeoMeta({
 
 const allLinksAreEmpty = computed(() => {
   return (
-    !props.state.email &&
-    !props.state.phone &&
-    !props.state.facebook &&
-    !props.state.instagram &&
-    !props.state.twitter &&
-    !props.state.linkedin &&
-    !props.state.youtube
+    !props.acc.agentData.email &&
+    !props.acc.agentData.phone &&
+    !props.acc.agentData.facebook &&
+    !props.acc.agentData.instagram &&
+    !props.acc.agentData.twitter &&
+    !props.acc.agentData.linkedin &&
+    !props.acc.agentData.youtube
   );
 });
 </script>

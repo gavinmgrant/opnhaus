@@ -20,6 +20,7 @@
               name="email"
               id="email"
               v-model="state.email"
+              @input="$emit('update:email', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="agent@example.com"
             />
@@ -40,6 +41,7 @@
               name="phone"
               id="phone"
               v-model="state.phone"
+              @input="$emit('update:phone', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="(555) 123-4567"
             />
@@ -60,6 +62,7 @@
               name="facebook"
               id="facebook"
               v-model="state.facebook"
+              @input="$emit('update:facebook', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://fb.com/agent"
             />
@@ -80,6 +83,7 @@
               name="instagram"
               id="instagram"
               v-model="state.instagram"
+              @input="$emit('update:instagram', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://instagram.com/agent"
             />
@@ -100,6 +104,7 @@
               name="twitter"
               id="twitter"
               v-model="state.twitter"
+              @input="$emit('update:twitter', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://twitter.com/agent"
             />
@@ -121,6 +126,7 @@
               name="linkedin"
               id="linkedin"
               v-model="state.linkedin"
+              @input="$emit('update:linkedin', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://www.linkedin.com/in/agent"
             />
@@ -141,6 +147,7 @@
               name="youtube"
               id="youtube"
               v-model="state.youtube"
+              @input="$emit('update:youtube', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="https://www.youtube.com/@agent"
             />
@@ -151,5 +158,14 @@
   </base-form-section>
 </template>
 <script setup>
-const props = defineProps(["state"]);
+const props = defineProps([
+  "state",
+  "email",
+  "phone",
+  "facebook",
+  "instagram",
+  "twitter",
+  "linkedin",
+  "youtube",
+]);
 </script>

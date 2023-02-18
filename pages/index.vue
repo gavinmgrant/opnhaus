@@ -44,7 +44,7 @@
         <button
           @click="publish"
           :disabled="data.times.length < 1 || !data.address || !state.name"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full disabled:opacity-75 disabled:hover:cursor-not-allowed active:bg-slate-800"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full disabled:opacity-75 disabled:hover:cursor-not-allowed hover:bg-slate-800 transitions-all duration-300"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />

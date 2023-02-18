@@ -33,7 +33,7 @@
             />
             <button
               @click="fetchProperty(property)"
-              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 text-sm text-gray-500 hover:text-slate-700"
+              class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-200 px-3 text-sm text-gray-500 hover:text-slate-800 transitions-all duration-300"
             >
               <span class="mr-2">Autofill</span>
               <icon name="ion:wand" class="w-5 h-5" />

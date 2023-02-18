@@ -1,9 +1,16 @@
 <template>
   <li>
     <div v-if="date && startTime && endTime">
-      <dt
-        class="flex items-center p-1 rounded-lg bg-slate-50 shadow-lg"
-      >
+      <dt class="flex items-center p-1 rounded-lg bg-slate-50 shadow-lg">
+        <div class="w-full flex min-w-0 mx-2">
+          <p class="font-medium text-sm leading-6 text-gray-900">
+            {{ format(parse(date, "yyyy-MM-dd", new Date()), "MM/dd/yyyy") }}
+          </p>
+          <p class="font-medium text-sm leading-6 text-gray-900 ml-3">
+            {{ format(parse(startTime, "HH:mm", new Date()), "hh:mm a") }} -
+            {{ format(parse(endTime, "HH:mm", new Date()), "hh:mm a") }}
+          </p>
+        </div>
         <add-to-calendar-button
           :name="'Open House by ' + name"
           options="'Apple','Google', 'Outlook.com'"
@@ -17,15 +24,6 @@
           buttonStyle="round"
           listStyle="modal"
         />
-        <div class="w-full flex min-w-0 ml-1">
-          <p class="font-medium text-sm leading-6 text-gray-900">
-            {{ format(parse(date, "yyyy-MM-dd", new Date()), "MM/dd/yyyy") }}
-          </p>
-          <p class="font-medium text-sm leading-6 text-gray-900 ml-3">
-            {{ format(parse(startTime, "HH:mm", new Date()), "hh:mm a") }} -
-            {{ format(parse(endTime, "HH:mm", new Date()), "hh:mm a") }}
-          </p>
-        </div>
       </dt>
     </div>
   </li>

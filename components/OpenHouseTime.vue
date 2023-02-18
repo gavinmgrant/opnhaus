@@ -2,7 +2,7 @@
   <li>
     <div v-if="date && startTime && endTime">
       <dt
-        class="flex items-center space-x-2 p-1 -m-1 rounded-xl hover:bg-slate-100 bg-slate-50"
+        class="flex items-center p-1 rounded-lg bg-slate-50 shadow-lg"
       >
         <add-to-calendar-button
           :name="'Open House by' + this.name"
@@ -17,7 +17,7 @@
           buttonStyle="round"
           listStyle="modal"
         />
-        <div class="w-full flex min-w-0">
+        <div class="w-full flex min-w-0 ml-1">
           <p class="font-medium text-sm leading-6 text-gray-900">
             {{ format(parse(date, "yyyy-MM-dd", new Date()), "MM/dd/yyyy") }}
           </p>

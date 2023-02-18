@@ -59,7 +59,7 @@ import { encodeData } from "../utils/transformer";
 import { useLocalStorage } from "@vueuse/core";
 
 useHead({
-  title: "OpnHaus",
+  title: "OpnHaus | Open House Landing Pages",
   meta: [
     {
       name: "description",

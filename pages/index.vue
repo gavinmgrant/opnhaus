@@ -42,7 +42,7 @@
       >
         <h1 class="text-3xl font-bold text-slate-800">OpnHaus</h1>
         <button
-          @click="publish"
+          @click="modalOn = true"
           :disabled="data.times.length < 1 || !data.address || !state.name"
           class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full disabled:opacity-75 disabled:hover:cursor-not-allowed hover:bg-slate-800 transitions-all duration-300"
         >
@@ -53,10 +53,17 @@
     </div>
     <app-form-preview :data="data" />
   </div>
+  <app-form-modal
+    v-model:open="modalOn"
+    v-model:buttonText="buttonText"
+    :data="data"
+  />
 </template>
 <script setup>
 import { encodeData } from "../utils/transformer";
 import { useLocalStorage } from "@vueuse/core";
+
+const modalOn = ref(false);
 
 useHead({
   title: "OpnHaus | Open House Landing Pages",
@@ -103,10 +110,5 @@ const messages = ref({
   agentError: "",
 });
 
-const publish = () => {
-  const url = `${window.location.origin}/1?data=${encodeData(data.value)}`;
-  navigator.clipboard.writeText(url).then(() => {
-    alert("Your OpnHaus link is copied to clipboard!");
-  });
-};
+const buttonText = ref("Copy to Clipboard");
 </script>

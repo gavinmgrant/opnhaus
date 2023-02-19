@@ -3,11 +3,11 @@
     <section>
       <h1 class="text-center text-3xl font-semibold mb-2">Open House</h1>
       <div
-        v-if="acc.propertyPhoto"
+        v-if="acc.photo"
         class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg"
       >
         <img
-          :src="acc.propertyPhoto"
+          :src="acc.photo"
           alt="Property photo"
           class="h-full w-full object-cover rounded-t-lg"
         />

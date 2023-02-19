@@ -50,9 +50,9 @@
         </div>
 
         <app-form-toggle
-          text="Edit agent details"
+          :text="toggleOn ? 'Hide details' : 'Show details'"
           :toggleOn="toggleOn"
-          @click="handleToggle"
+          @click="toggleOn = !toggleOn"
         />
 
         <div class="col-span-6 sm:col-span-3" v-if="toggleOn">
@@ -113,21 +113,8 @@
     </div>
   </base-form-section>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      toggleOn: false,
-    };
-  },
-  methods: {
-    handleToggle() {
-      this.toggleOn = !this.toggleOn;
-    },
-  },
-};
-</script>
 <script setup>
+const toggleOn = ref(false);
 const props = defineProps([
   "state",
   "name",

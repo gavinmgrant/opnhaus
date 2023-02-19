@@ -28,10 +28,10 @@
               id="agent-url"
               class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm z-10"
               placeholder="https://www.realtor.com/realestateagents/example"
-              v-model="state.agentUrl"
+              v-model="state.url"
             />
             <button
-              @click="fetchAgent(state.agentUrl)"
+              @click="fetchAgent(state.url)"
               class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-200 px-3 text-sm text-gray-500 hover:text-slate-800 transitions-all duration-300"
             >
               <span class="mr-2">Autofill</span>

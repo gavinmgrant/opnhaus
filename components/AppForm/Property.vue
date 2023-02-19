@@ -114,8 +114,8 @@
             id="listing-photo-url"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder=""
-            :value="propertyPhoto"
-            @input="$emit('update:propertyPhoto', $event.target.value)"
+            :value="photo"
+            @input="$emit('update:photo', $event.target.value)"
           />
         </div>
       </div>
@@ -141,14 +141,14 @@ const props = defineProps([
   "property",
   "propertySuccess",
   "propertyError",
-  "propertyPhoto",
+  "photo",
   "address",
   "beds",
   "baths",
 ]);
 const emit = defineEmits([
   "update:property",
-  "update:propertyPhoto",
+  "update:photo",
   "update:address",
   "update:beds",
   "update:baths",
@@ -161,7 +161,7 @@ const fetchProperty = async (url) => {
     body: url,
   })
     .then((res) => {
-      emit("update:propertyPhoto", res.photoUrl);
+      emit("update:photo", res.photoUrl);
       emit("update:address", res.address);
       emit("update:beds", res.beds);
       emit("update:baths", res.baths);

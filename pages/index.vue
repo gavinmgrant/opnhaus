@@ -6,35 +6,35 @@
       <div class="flex-1 overflow-y-auto p-4">
         <app-form-property
           v-model:property="data.property"
-          v-model:propertyPhoto="data.propertyPhoto"
+          v-model:photo="data.photo"
           v-model:address="data.address"
           v-model:beds="data.beds"
           v-model:baths="data.baths"
-          v-model:propertySuccess="data.propertySuccess"
-          v-model:propertyError="data.propertyError"
+          v-model:propertySuccess="messages.propertySuccess"
+          v-model:propertyError="messages.propertyError"
         />
         <app-form-hr />
         <app-form-times v-model="data.times" />
         <app-form-hr />
         <app-form-profile
           v-model:state="state"
-          v-model:name="data.agentData.name"
-          v-model:license="data.agentData.license"
-          v-model:broker="data.agentData.broker"
-          v-model:image="data.agentData.image"
-          v-model:agentSuccess="data.agentSuccess"
-          v-model:agentError="data.agentError"
+          v-model:name="data.agent.name"
+          v-model:license="data.agent.license"
+          v-model:broker="data.agent.broker"
+          v-model:image="data.agent.image"
+          v-model:agentSuccess="messages.agentSuccess"
+          v-model:agentError="messages.agentError"
         />
         <app-form-hr />
         <app-form-social-links
           v-model:state="state"
-          v-model:email="data.agentData.email"
-          v-model:phone="data.agentData.phone"
-          v-model:facebook="data.agentData.facebook"
-          v-model:instagram="data.agentData.instagram"
-          v-model:twitter="data.agentData.twitter"
-          v-model:linkedin="data.agentData.linkedin"
-          v-model:youtube="data.agentData.youtube"
+          v-model:email="data.agent.email"
+          v-model:phone="data.agent.phone"
+          v-model:facebook="data.agent.facebook"
+          v-model:instagram="data.agent.instagram"
+          v-model:twitter="data.agent.twitter"
+          v-model:linkedin="data.agent.linkedin"
+          v-model:youtube="data.agent.youtube"
         />
       </div>
       <div
@@ -69,8 +69,8 @@ useHead({
   ],
 });
 
-const agentData = {
-  agentUrl: "",
+const agent = {
+  url: "",
   name: "",
   license: "",
   broker: "",
@@ -84,20 +84,23 @@ const agentData = {
   youtube: "",
 };
 
-const state = useLocalStorage("OpnHaus", agentData);
+const state = useLocalStorage("OpnHaus", agent);
 
 const data = ref({
   property: "",
-  propertySuccess: "",
-  propertyError: "",
-  propertyPhoto: "",
+  photo: "",
   address: "",
   beds: "",
   baths: "",
+  times: [],
+  agent: state.value,
+});
+
+const messages = ref({
+  propertySuccess: "",
+  propertyError: "",
   agentSuccess: "",
   agentError: "",
-  times: [],
-  agentData: state.value,
 });
 
 const publish = () => {

@@ -114,6 +114,8 @@
   </base-form-section>
 </template>
 <script setup>
+import { validateUrl } from "../../utils/validateUrl";
+
 const toggleOn = ref(false);
 const props = defineProps([
   "state",
@@ -133,6 +135,10 @@ const emit = defineEmits([
   "update:agentError",
 ]);
 const fetchAgent = async (url) => {
+  const invalidUrl = !validateUrl(url);
+  if (invalidUrl)
+    return emit("update:agentError", "❌ Invalid URL. Please try again.");
+
   await $fetch("/api/agent", {
     method: "POST",
     body: url,
@@ -159,7 +165,7 @@ const fetchAgent = async (url) => {
       emit("update:agentSuccess", "");
       emit(
         "update:agentError",
-        "❌ Sorry, we can't locate your profile. Please enter a valid URL."
+        "❌ Sorry, we can't locate your profile. Please enter a valid Realtor.com URL."
       );
     });
 };

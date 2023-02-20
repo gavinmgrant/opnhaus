@@ -123,6 +123,8 @@
   </base-form-section>
 </template>
 <script setup>
+import { validateUrl } from "../../utils/validateUrl";
+
 const toggleOn = ref(false);
 const props = defineProps([
   "property",
@@ -143,6 +145,10 @@ const emit = defineEmits([
   "update:propertyError",
 ]);
 const fetchProperty = async (url) => {
+  const invalidUrl = !validateUrl(url);
+  if (invalidUrl)
+    return emit("update:propertyError", "❌ Invalid URL. Please try again.");
+
   await $fetch("/api/property", {
     method: "POST",
     body: url,
@@ -165,7 +171,7 @@ const fetchProperty = async (url) => {
       emit("update:propertySuccess", "");
       emit(
         "update:propertyError",
-        "❌ Sorry, we can't locate this listing. Please enter a valid URL."
+        "❌ Sorry, we can't locate this listing. Please enter a valid Realtor.com URL."
       );
     });
 };

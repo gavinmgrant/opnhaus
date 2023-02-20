@@ -90,6 +90,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
+import { encodeData } from "../../utils/transformer";
 
 const props = defineProps(["open", "buttonText", "data"]);
 const emit = defineEmits(["update:open", "update:buttonText"]);

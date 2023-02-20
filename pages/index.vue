@@ -60,7 +60,6 @@
   />
 </template>
 <script setup>
-import { encodeData } from "../utils/transformer";
 import { useLocalStorage } from "@vueuse/core";
 
 const modalOn = ref(false);

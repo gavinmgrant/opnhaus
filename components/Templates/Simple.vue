@@ -146,7 +146,7 @@
         rel="noopener | noreferrer"
       >
         <button
-          class="bg-gradient-to-r from-indigo-500 to-pink-500 text-white text-sm opacity-90 hover:opacity-100 px-4 py-2 rounded-full transitions-all duration-300"
+          class="text-sm px-4 py-2 rounded-full border-solid border-2 border-slate-800"
         >
           Powered by <span class="font-semibold">OpnHaus</span>
         </button>

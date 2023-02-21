@@ -48,7 +48,7 @@
         <button
           @click="modalOn = true"
           :disabled="data.times.length < 1 || !data.address || !state.name"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-50 disabled:hover:cursor-not-allowed bg-gradient-to-r disabled:from-indigo-500 disabled:to-indigo-500 from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-70 disabled:hover:cursor-not-allowed bg-gradient-to-r from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />

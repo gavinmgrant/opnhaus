@@ -40,11 +40,15 @@
       <div
         class="relative bottom-0 left-0 w-full border-t bg-white flex items-center justify-between p-4"
       >
-        <h1 class="text-3xl font-bold text-slate-800">OpnHaus</h1>
+        <h1
+          class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500"
+        >
+          OpnHaus
+        </h1>
         <button
           @click="modalOn = true"
           :disabled="data.times.length < 1 || !data.address || !state.name"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold bg-slate-700 text-white rounded-full disabled:opacity-75 disabled:hover:cursor-not-allowed hover:bg-slate-800 transitions-all duration-300"
+          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-50 disabled:hover:cursor-not-allowed bg-gradient-to-r disabled:from-indigo-500 disabled:to-indigo-500 from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />

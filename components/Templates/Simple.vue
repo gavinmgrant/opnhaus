@@ -1,7 +1,7 @@
 <template>
   <main class="p-4 bg-white h-full w-full py-6 max-w-lg mx-auto text-slate-800">
     <section>
-      <h1 class="text-center text-3xl font-semibold mb-2">Open House</h1>
+      <h1 class="text-center text-3xl font-bold mb-2">Open House</h1>
       <div
         v-if="acc.photo"
         class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg"
@@ -146,9 +146,9 @@
         rel="noopener | noreferrer"
       >
         <button
-          class="bg-slate-400 hover:bg-slate-500 text-white text-xs px-4 py-2 rounded-full transitions-all duration-300"
+          class="bg-gradient-to-r from-indigo-500 to-pink-500 text-white text-sm opacity-90 hover:opacity-100 px-4 py-2 rounded-full transitions-all duration-300"
         >
-          Powered by OpnHaus
+          Powered by <span class="font-semibold">OpnHaus</span>
         </button>
       </a>
     </section>

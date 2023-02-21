@@ -123,7 +123,7 @@ const publish = async () => {
   }).then((res) => {
     shortUrl.value = res.shortUrl;
     buttonText.value = "Copied!";
-    navigator.clipboard.writeText(res.shortUrl);
+    navigator.clipboard.writeText(`opn.haus/link/${res.shortUrl}`);
   });
 };
 </script>

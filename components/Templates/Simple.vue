@@ -1,5 +1,5 @@
 <template>
-  <main class="p-4 bg-white h-full w-full py-6 max-w-lg mx-auto text-slate-800">
+  <main class="p-4 bg-white h-full w-full py-4 max-w-lg mx-auto text-slate-800">
     <section>
       <h1 class="text-center text-3xl font-bold mb-2">Open House</h1>
       <div
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <ul class="space-y-2 mt-6">
+      <ul class="space-y-2 mt-4">
         <open-house-time
           v-for="(time, id) in acc.times"
           :key="id"
@@ -45,7 +45,7 @@
 
       <div
         v-if="acc.agent.name"
-        class="flex items-center justify-start mt-6 w-full rounded-lg bg-slate-50 shadow-lg p-4"
+        class="flex items-center justify-start mt-4 w-full rounded-lg bg-slate-50 shadow-lg p-4"
       >
         <div
           v-if="acc.agent.image"
@@ -139,7 +139,7 @@
         </div>
       </div>
     </section>
-    <section class="text-center mt-6 pb-6">
+    <section class="text-center mt-4 pb-4">
       <a
         href="https://www.opn.haus/"
         target="_blank"

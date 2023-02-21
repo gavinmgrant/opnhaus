@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-30" @close="$emit('update:open', false)">
+    <Dialog as="div" class="relative z-30" @close="close">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -44,13 +44,25 @@
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle
                       as="h3"
-                      class="text-lg font-medium leading-6 text-gray-900"
+                      class="text-lg font-semibold leading-6 text-gray-700"
                       >Link Created!</DialogTitle
                     >
-                    <div class="mt-2">
-                      <p class="text-sm text-gray-500">
+                    <div v-if="!shortUrl" class="mt-2">
+                      <p class="text-gray-500">
                         Your custom open house link has been created.
                       </p>
+                    </div>
+                    <div v-if="shortUrl" class="mt-2">
+                      <p class="text-gray-500">
+                        Your open house link:
+                      </p>
+                      <a
+                        class="font-semibold text-gray-700"
+                        :href="'link/' + shortUrl"
+                        target="_blank"
+                      >
+                        opn.haus/link/{{ shortUrl }}
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -68,7 +80,7 @@
                 <button
                   type="button"
                   class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                  @click="$emit('update:open', false)"
+                  @click="close"
                   ref="cancelButtonRef"
                 >
                   Close
@@ -91,13 +103,27 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { encodeData } from "../../utils/transformer";
+const shortUrl = ref("");
+const buttonText = ref("Copy to Clipboard");
+const props = defineProps(["open", "data"]);
+const emit = defineEmits(["update:open"]);
 
-const props = defineProps(["open", "buttonText", "data"]);
-const emit = defineEmits(["update:open", "update:buttonText"]);
+const close = () => {
+  shortUrl.value = "";
+  buttonText.value = "Copy to Clipboard";
+  emit("update:open", false);
+};
 
-const publish = () => {
-  const url = `${window.location.origin}/1?data=${encodeData(props.data)}`;
-  navigator.clipboard.writeText(url);
-  emit("update:buttonText", "Copied!");
+const publish = async () => {
+  const url = `1?data=${encodeData(props.data)}`;
+
+  await $fetch("/api/shorten", {
+    method: "POST",
+    body: url,
+  }).then((res) => {
+    shortUrl.value = res.shortUrl;
+    buttonText.value = "Copied!";
+    navigator.clipboard.writeText(res.shortUrl);
+  });
 };
 </script>

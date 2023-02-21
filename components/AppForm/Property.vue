@@ -146,8 +146,10 @@ const emit = defineEmits([
 ]);
 const fetchProperty = async (url) => {
   const invalidUrl = !validateUrl(url);
-  if (invalidUrl)
+  if (invalidUrl) {
+    emit("update:propertySuccess", "");
     return emit("update:propertyError", "❌ Invalid URL. Please try again.");
+  }
 
   await $fetch("/api/property", {
     method: "POST",

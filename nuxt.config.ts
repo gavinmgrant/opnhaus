@@ -1,9 +1,14 @@
-export default ({
-    modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@vueuse/nuxt'],
-    build: {
-        transpile: ["@headlessui/vue"],
-    },
-    colorMode: {
-        classSuffix: '',
-    },
-})
+import { defineNuxtConfig } from "nuxt/config";
+
+export default defineNuxtConfig({
+  modules: ["@nuxtjs/tailwindcss", "nuxt-icon", "@vueuse/nuxt"],
+  build: {
+    transpile: ["@headlessui/vue"],
+  },
+  nitro: {
+    plugins: ["~/server/index.ts"],
+  },
+  runtimeConfig: {
+    mongodbUri: process.env.MONGODB_URI,
+  },
+});

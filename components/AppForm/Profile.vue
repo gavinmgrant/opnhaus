@@ -136,8 +136,10 @@ const emit = defineEmits([
 ]);
 const fetchAgent = async (url) => {
   const invalidUrl = !validateUrl(url);
-  if (invalidUrl)
+  if (invalidUrl) {
+    emit("update:agentSuccess", "");
     return emit("update:agentError", "❌ Invalid URL. Please try again.");
+  }
 
   await $fetch("/api/agent", {
     method: "POST",

@@ -53,11 +53,7 @@
     </div>
     <app-form-preview :data="data" />
   </div>
-  <app-form-modal
-    v-model:open="modalOn"
-    v-model:buttonText="buttonText"
-    :data="data"
-  />
+  <app-form-modal v-model:open="modalOn" :data="data" />
 </template>
 <script setup>
 import { useLocalStorage } from "@vueuse/core";
@@ -108,6 +104,4 @@ const messages = ref({
   agentSuccess: "",
   agentError: "",
 });
-
-const buttonText = ref("Copy to Clipboard");
 </script>

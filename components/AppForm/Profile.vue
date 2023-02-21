@@ -17,7 +17,7 @@
     </template>
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-        <div class="flex-grow col-span-6 sm:col-span-3">
+        <div class="flex-grow col-span-6 sm:col-span-3 mb-8">
           <label for="agent-url" class="block text-sm font-medium text-gray-700"
             >Realtor.com Agent URL (enter to autofill details)</label
           >
@@ -52,13 +52,13 @@
           <div v-if="agentError" class="text-sm text-red-600 text-center mt-2">
             {{ agentError }}
           </div>
-        </div>
 
-        <app-form-toggle
-          :text="toggleOn ? 'Hide details' : 'Show details'"
-          :toggleOn="toggleOn"
-          @click="toggleOn = !toggleOn"
-        />
+          <app-form-toggle
+            :text="toggleOn ? 'Hide details' : 'Show details'"
+            :toggleOn="toggleOn"
+            @click="toggleOn = !toggleOn"
+          />
+        </div>
 
         <div class="col-span-6 sm:col-span-3" v-if="toggleOn">
           <label for="name" class="block text-sm font-medium text-gray-700"

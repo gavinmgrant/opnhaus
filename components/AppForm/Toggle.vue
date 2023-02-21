@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex justify-end">
+  <div class="absolute right-6 mt-2">
     <div class="flex flex-row justify-between toggle">
       <div class="flex items-center cursor-pointer">
         <label

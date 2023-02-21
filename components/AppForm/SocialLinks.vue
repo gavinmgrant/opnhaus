@@ -3,6 +3,11 @@
     title="Links"
     description="Enter your contact info and social links"
   >
+    <template #helpertext>
+      <p class="mt-1 text-xs text-gray-600">
+        Buttons will be added below your name.
+      </p>
+    </template>
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="grid grid-cols-1 gap-4 bg-white px-4 py-5 sm:p-6">
         <div>

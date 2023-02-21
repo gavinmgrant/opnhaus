@@ -1,8 +1,10 @@
 <template>
-  <base-form-section
-    title="Times"
-    description="Enter your open houses times"
-  >
+  <base-form-section title="Times" description="Enter your open houses times">
+    <template #helpertext>
+      <p class="mt-1 text-xs text-gray-600">
+        Times can be added to calendars quickly.
+      </p>
+    </template>
     <draggable
       :list="modelValue"
       item-key="time"
@@ -52,7 +54,6 @@
                     id="start-time"
                     step="900"
                     v-model="time.startTime"
-                 
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -68,7 +69,6 @@
                     id="end-time"
                     step="900"
                     v-model="time.endTime"
-                 
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>

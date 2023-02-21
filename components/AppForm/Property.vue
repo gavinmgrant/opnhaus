@@ -36,7 +36,8 @@
               class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-200 px-3 text-sm text-gray-500 hover:text-slate-800 transitions-all duration-300"
             >
               <span class="mr-2">Autofill</span>
-              <icon name="ion:wand" class="w-5 h-5" />
+              <icon v-if="!loading" name="ion:wand" class="w-5 h-5" />
+              <icon v-if="loading" name="icon-park-outline:loading-one" class="animate-spin w-5 h-5" />
             </button>
           </div>
           <div
@@ -126,6 +127,7 @@
 import { validateUrl } from "../../utils/validateUrl";
 
 const toggleOn = ref(false);
+const loading = ref(false);
 const props = defineProps([
   "property",
   "propertySuccess",
@@ -145,8 +147,10 @@ const emit = defineEmits([
   "update:propertyError",
 ]);
 const fetchProperty = async (url) => {
+  loading.value = true;
   const invalidUrl = !validateUrl(url);
   if (invalidUrl) {
+    loading.value = false;
     emit("update:propertySuccess", "");
     return emit("update:propertyError", "❌ Invalid URL. Please try again.");
   }
@@ -175,6 +179,9 @@ const fetchProperty = async (url) => {
         "update:propertyError",
         "❌ Sorry, we can't locate this listing. Please enter a valid Realtor.com URL."
       );
+    })
+    .finally(() => {
+      loading.value = false;
     });
 };
 </script>

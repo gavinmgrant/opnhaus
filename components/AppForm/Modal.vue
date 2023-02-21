@@ -53,9 +53,7 @@
                       </p>
                     </div>
                     <div v-if="shortUrl" class="mt-2">
-                      <p class="text-gray-500">
-                        Your open house link:
-                      </p>
+                      <p class="text-gray-500">Your open house link:</p>
                       <a
                         class="font-semibold text-gray-700"
                         :href="'link/' + shortUrl"
@@ -75,7 +73,12 @@
                   class="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                   @click="publish"
                 >
-                  {{ buttonText }}
+                  <span v-if="!loading">{{ buttonText }}</span>
+                  <icon
+                    v-if="loading"
+                    name="icon-park-outline:loading-one"
+                    class="animate-spin w-5 h-5"
+                  />
                 </button>
                 <button
                   type="button"
@@ -103,6 +106,7 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { encodeData } from "../../utils/transformer";
+const loading = ref(false);
 const shortUrl = ref("");
 const buttonText = ref("Copy to Clipboard");
 const props = defineProps(["open", "data"]);
@@ -115,15 +119,23 @@ const close = () => {
 };
 
 const publish = async () => {
+  loading.value = true;
   const url = `1?data=${encodeData(props.data)}`;
 
   await $fetch("/api/shorten", {
     method: "POST",
     body: url,
-  }).then((res) => {
-    shortUrl.value = res.shortUrl;
-    buttonText.value = "Copied!";
-    navigator.clipboard.writeText(`opn.haus/link/${res.shortUrl}`);
-  });
+  })
+    .then((res) => {
+      shortUrl.value = res.shortUrl;
+      buttonText.value = "Copied!";
+      navigator.clipboard.writeText(`opn.haus/link/${res.shortUrl}`);
+    })
+    .catch((err) => {
+      console.log("Error publishing link: ", err);
+    })
+    .finally(() => {
+      loading.value = false;
+    });
 };
 </script>

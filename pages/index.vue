@@ -85,6 +85,7 @@ const agent = {
   phone: "",
   facebook: "",
   instagram: "",
+  tiktok: "",
   twitter: "",
   linkedin: "",
   youtube: "",

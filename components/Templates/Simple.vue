@@ -108,6 +108,15 @@
                 <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
+            <span v-if="acc.agent.tiktok" class="pr-2">
+              <a
+                :href="acc.agent.tiktok"
+                target="_blank"
+                rel="noopener | noreferrer"
+              >
+                <icon name="ph:tiktok-logo-duotone" class="h-6 w-6" />
+              </a>
+            </span>
             <span v-if="acc.agent.twitter" class="pr-2">
               <a
                 :href="acc.agent.twitter"

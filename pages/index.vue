@@ -32,6 +32,7 @@
           v-model:phone="data.agent.phone"
           v-model:facebook="data.agent.facebook"
           v-model:instagram="data.agent.instagram"
+          v-model:tiktok="data.agent.tiktok"
           v-model:twitter="data.agent.twitter"
           v-model:linkedin="data.agent.linkedin"
           v-model:youtube="data.agent.youtube"

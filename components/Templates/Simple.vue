@@ -1,31 +1,34 @@
 <template>
   <main class="p-4 bg-white h-full w-full py-4 max-w-lg mx-auto text-slate-800">
     <section>
-      <h1 class="text-center text-3xl font-bold mb-2">Open House</h1>
-      <div
-        v-if="acc.photo"
-        class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg"
-      >
+      <header class="relative flex items-center justify-center mb-2">
+        <h1 class="text-center text-3xl font-bold">Open House</h1>
+
+        <button @click="copyToClipboard" class="absolute right-0">
+          <icon name="material-symbols:share" class="h-7 w-7" />
+        </button>
+      </header>
+      <div v-if="acc.ph" class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg">
         <img
-          :src="acc.photo"
+          :src="acc.ph"
           alt="Property photo"
           class="h-full w-full object-cover rounded-t-lg"
         />
         <div class="px-1 py-4">
-          <h1 v-if="acc.address" class="text-center font-medium mb-3">
-            {{ acc.address }}
+          <h1 v-if="acc.ad" class="text-center font-medium mb-3">
+            {{ acc.ad }}
           </h1>
           <div
-            v-if="acc.beds && acc.baths"
+            v-if="acc.bd && acc.ba"
             class="flex items-center justify-center text-md font-medium mb-1"
           >
-            <icon name="material-symbols:bedroom-child" class="h-6 w-6" /><span
+            <icon name="material-symbols:bedroom-child" class="h-8 w-8" /><span
               class="ml-1"
-              >{{ acc.beds }} bed</span
+              >{{ acc.bd }} bed</span
             >
-            <icon name="material-symbols:bathroom" class="h-6 w-6 ml-4" /><span
+            <icon name="material-symbols:bathroom" class="h-8 w-8 ml-4" /><span
               class="ml-1"
-              >{{ acc.baths }} bath</span
+              >{{ acc.ba }} bath</span
             >
           </div>
         </div>
@@ -33,120 +36,120 @@
 
       <ul class="space-y-2 mt-4">
         <open-house-time
-          v-for="(time, id) in acc.times"
+          v-for="(time, id) in acc.ti"
           :key="id"
           :date="time.date"
           :startTime="time.startTime"
           :endTime="time.endTime"
-          :address="acc.address"
-          :name="acc.agent.name"
+          :address="acc.ad"
+          :name="acc.agent.n"
         />
       </ul>
 
       <div
-        v-if="acc.agent.name"
+        v-if="acc.agent.n"
         class="flex items-center justify-start mt-4 w-full rounded-lg bg-slate-50 shadow-lg p-4"
       >
         <div
-          v-if="acc.agent.image"
+          v-if="acc.agent.i"
           class="h-20 w-20 rounded-full overflow-hidden flex-none mr-4"
         >
           <img
-            :src="acc.agent.image"
+            :src="acc.agent.i"
             alt="Agent name"
             class="h-full w-full object-cover"
           />
         </div>
         <div>
-          <h1 v-if="acc.agent.name" class="text-lg font-semibold">
-            {{ acc.agent.name }}
+          <h1 v-if="acc.agent.n" class="text-lg font-semibold">
+            {{ acc.agent.n }}
           </h1>
-          <p v-if="acc.agent.license" class="text-sm text-slate-600">
-            {{ acc.agent.license }}
+          <p v-if="acc.agent.l" class="text-sm text-slate-600">
+            {{ acc.agent.l }}
           </p>
-          <p v-if="acc.agent.broker" class="text-sm text-slate-600">
-            {{ acc.agent.broker }}
+          <p v-if="acc.agent.b" class="text-sm text-slate-600">
+            {{ acc.agent.b }}
           </p>
 
           <div
             v-if="!allLinksAreEmpty"
             class="flex items-center justify-start flex-wrap mt-1"
           >
-            <span v-if="acc.agent.email" class="pr-2">
+            <span v-if="acc.agent.e" class="pr-2 pb-1">
               <a
-                :href="`mailto:${acc.agent.email}`"
+                :href="`mailto:${acc.agent.e}`"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:envelope-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.phone" class="pr-2">
+            <span v-if="acc.agent.p" class="pr-2 pb-1">
               <a
-                :href="`tel:${acc.agent.phone}`"
+                :href="`tel:${acc.agent.p}`"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:phone-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.website" class="pr-2">
+            <span v-if="acc.agent.w" class="pr-2 pb-1">
               <a
-                :href="acc.agent.website"
+                :href="acc.agent.w"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:apple-podcasts-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.facebook" class="pr-2">
+            <span v-if="acc.agent.fb" class="pr-2 pb-1">
               <a
-                :href="acc.agent.facebook"
+                :href="acc.agent.fb"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:facebook-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.instagram" class="pr-2">
+            <span v-if="acc.agent.in" class="pr-2 pb-1">
               <a
-                :href="acc.agent.instagram"
+                :href="acc.agent.in"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:instagram-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.tiktok" class="pr-2">
+            <span v-if="acc.agent.tt" class="pr-2 pb-1">
               <a
-                :href="acc.agent.tiktok"
+                :href="acc.agent.tt"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:tiktok-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.twitter" class="pr-2">
+            <span v-if="acc.agent.tw" class="pr-2 pb-1">
               <a
-                :href="acc.agent.twitter"
+                :href="acc.agent.tw"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:twitter-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.linkedin" class="pr-2">
+            <span v-if="acc.agent.li" class="pr-2 pb-1">
               <a
-                :href="acc.agent.linkedin"
+                :href="acc.agent.li"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
                 <icon name="ph:linkedin-logo-duotone" class="h-6 w-6" />
               </a>
             </span>
-            <span v-if="acc.agent.youtube" class="pr-2">
+            <span v-if="acc.agent.yt" class="pr-2 pb-1">
               <a
-                :href="acc.agent.youtube"
+                :href="acc.agent.yt"
                 target="_blank"
                 rel="noopener | noreferrer"
               >
@@ -170,6 +173,8 @@
         </button>
       </a>
     </section>
+
+    <modal-share v-model:open="modalOn" :shortSlug="shortSlug" />
   </main>
 </template>
 <script setup>
@@ -178,15 +183,19 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  longSlug: {
+    type: String,
+    required: false,
+  },
 });
 
 const metaTitle =
-  props.acc.agent.name + " " + "Open House Landing Page by OpnHaus";
+  props.acc.agent.n + " " + "Open House Landing Page by OpnHaus";
 const metaDescription =
   "Visit my open House at " +
-  props.acc.address +
+  props.acc.ad +
   " presented by" +
-  props.acc.agent.name +
+  props.acc.agent.n +
   " | Powered by OpnHaus";
 
 useServerSeoMeta({
@@ -194,19 +203,44 @@ useServerSeoMeta({
   ogTitle: metaTitle,
   description: metaDescription,
   ogDescription: metaDescription,
-  ogImage: props.acc.propertyPhoto,
+  ogImage: props.acc.ph,
 });
 
 const allLinksAreEmpty = computed(() => {
   return (
-    !props.acc.agent.email &&
-    !props.acc.agent.phone &&
-    !props.acc.agent.facebook &&
-    !props.acc.agent.instagram &&
-    !props.acc.agent.twitter &&
-    !props.acc.agent.linkedin &&
-    !props.acc.agent.youtube
+    !props.acc.agent.e &&
+    !props.acc.agent.p &&
+    !props.acc.agent.w &&
+    !props.acc.agent.fb &&
+    !props.acc.agent.in &&
+    !props.acc.agent.tt &&
+    !props.acc.agent.tw &&
+    !props.acc.agent.li &&
+    !props.acc.agent.yt
   );
 });
+
+const modalOn = ref(false);
+const shortSlug = ref("");
+
+const getShortSlug = async () => {
+  await $fetch("/api/shorten", {
+    method: "GET",
+    query: { id: `1?data=${props.longSlug}` },
+  }).then((res) => {
+    if (res === "Does not exist.") {
+      shortSlug.value = "";
+    } else {
+      shortSlug.value = res;
+    }
+  });
+};
+
+getShortSlug();
+
+const copyToClipboard = () => {
+  modalOn.value = true;
+  navigator.clipboard.writeText(`opn.haus/link/${shortSlug.value}`);
+};
 </script>
 <style scoped></style>

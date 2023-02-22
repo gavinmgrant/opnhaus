@@ -28,10 +28,10 @@
               id="agent-url"
               class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm z-10"
               placeholder="https://www.realtor.com/realestateagents/example"
-              v-model="state.url"
+              v-model="state.u"
             />
             <button
-              @click="fetchAgent(state.url)"
+              @click="fetchAgent(state.u)"
               class="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 hover:bg-gray-200 px-3 text-sm text-gray-500 hover:text-slate-800 transitions-all duration-300"
             >
               <span class="mr-2">Autofill</span>
@@ -69,7 +69,7 @@
             name="name"
             id="name"
             autocomplete="given-name"
-            v-model="state.name"
+            v-model="state.n"
             @input="$emit('update:name', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -82,7 +82,7 @@
             type="text"
             name="license"
             id="license"
-            v-model="state.license"
+            v-model="state.l"
             @input="$emit('update:license', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -95,7 +95,7 @@
             type="text"
             name="broker"
             id="broker"
-            v-model="state.broker"
+            v-model="state.b"
             @input="$emit('update:broker', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -109,7 +109,7 @@
             name="photo-url"
             id="photo-url"
             placeholder=""
-            v-model="state.image"
+            v-model="state.i"
             @input="$emit('update:image', $event.target.value)"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -154,10 +154,10 @@ const fetchAgent = async (url) => {
     body: url,
   })
     .then((res) => {
-      props.state.name = res.agentName;
-      props.state.license = res.license;
-      props.state.broker = res.broker;
-      props.state.image = res.agentPhotoUrl;
+      props.state.n = res.agentName;
+      props.state.l = res.license;
+      props.state.b = res.broker;
+      props.state.i = res.agentPhotoUrl;
       emit("update:name", res.agentName);
       emit("update:license", res.license);
       emit("update:broker", res.broker);

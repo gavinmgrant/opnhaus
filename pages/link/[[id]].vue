@@ -11,7 +11,7 @@ const route = useRoute();
 const id = route.path.split("/link/").pop();
 
 const redirect = async () => {
-  await $fetch("/api/shorten", {
+  await $fetch("/api/lengthen", {
     method: "GET",
     query: { id },
   }).then((res) => {

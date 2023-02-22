@@ -5,38 +5,38 @@
     >
       <div class="flex-1 overflow-y-auto p-4">
         <app-form-property
-          v-model:property="data.property"
-          v-model:photo="data.photo"
-          v-model:address="data.address"
-          v-model:beds="data.beds"
-          v-model:baths="data.baths"
+          v-model:property="data.pr"
+          v-model:photo="data.ph"
+          v-model:address="data.ad"
+          v-model:beds="data.bd"
+          v-model:baths="data.ba"
           v-model:propertySuccess="messages.propertySuccess"
           v-model:propertyError="messages.propertyError"
         />
         <app-form-hr />
-        <app-form-times v-model="data.times" />
+        <app-form-times v-model="data.ti" />
         <app-form-hr />
         <app-form-profile
           v-model:state="state"
-          v-model:name="data.agent.name"
-          v-model:license="data.agent.license"
-          v-model:broker="data.agent.broker"
-          v-model:image="data.agent.image"
+          v-model:name="data.agent.n"
+          v-model:license="data.agent.l"
+          v-model:broker="data.agent.b"
+          v-model:image="data.agent.i"
           v-model:agentSuccess="messages.agentSuccess"
           v-model:agentError="messages.agentError"
         />
         <app-form-hr />
         <app-form-social-links
           v-model:state="state"
-          v-model:email="data.agent.email"
-          v-model:phone="data.agent.phone"
-          v-model:website="data.agent.website"
-          v-model:facebook="data.agent.facebook"
-          v-model:instagram="data.agent.instagram"
-          v-model:tiktok="data.agent.tiktok"
-          v-model:twitter="data.agent.twitter"
-          v-model:linkedin="data.agent.linkedin"
-          v-model:youtube="data.agent.youtube"
+          v-model:email="data.agent.e"
+          v-model:phone="data.agent.p"
+          v-model:website="data.agent.w"
+          v-model:facebook="data.agent.fb"
+          v-model:instagram="data.agent.in"
+          v-model:tiktok="data.agent.tt"
+          v-model:twitter="data.agent.tw"
+          v-model:linkedin="data.agent.li"
+          v-model:youtube="data.agent.yt"
         />
       </div>
       <div
@@ -49,7 +49,7 @@
         </h1>
         <button
           @click="modalOn = true"
-          :disabled="data.times.length < 1 || !data.address || !state.name"
+          :disabled="data.ti.length < 1 || !data.ad || !state.n"
           class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-70 disabled:hover:cursor-not-allowed bg-gradient-to-r from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
         >
           <span>Create Link</span>
@@ -78,31 +78,31 @@ useHead({
 });
 
 const agent = {
-  url: "",
-  name: "",
-  license: "",
-  broker: "",
-  image: "",
-  email: "",
-  phone: "",
-  website: "",
-  facebook: "",
-  instagram: "",
-  tiktok: "",
-  twitter: "",
-  linkedin: "",
-  youtube: "",
+  u: "", // agent profile URL
+  n: "", // agent name
+  l: "", // license
+  b: "", // broker
+  i: "", // headshot image URL
+  e: "", // email
+  p: "", // phone
+  w: "", // website URL
+  fb: "", // facebook
+  in: "", // instagram
+  tt: "", // tiktok
+  tw: "", // twitter
+  li: "", // linkedin
+  yt: "", // youtube
 };
 
 const state = useLocalStorage("OpnHaus", agent);
 
 const data = ref({
-  property: "",
-  photo: "",
-  address: "",
-  beds: "",
-  baths: "",
-  times: [],
+  pr: "", // property URL
+  ph: "", // property photo
+  ad: "", // property address
+  bd: "", // no. of beds
+  ba: "", // no. of baths
+  ti: [], // array of open house times
   agent: state.value,
 });
 

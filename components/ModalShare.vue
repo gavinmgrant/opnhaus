@@ -64,23 +64,24 @@
                 </div>
                 <div v-if="!shortSlug" class="sm:flex sm:items-start">
                   <div
-                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+                    class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10"
                   >
                     <icon
                       name="material-symbols:error-circle-rounded-outline"
-                      class="w-10 h-10 text-red-600"
+                      class="w-10 h-10 text-orange-600"
                     />
                   </div>
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle
                       as="h3"
                       class="text-lg font-semibold leading-6 text-gray-700"
-                      >Error</DialogTitle
+                      >No Link Yet</DialogTitle
                     >
                     <div class="mt-2">
                       <p class="text-gray-500">
-                        Sorry, there was an issue finding the link to this open
-                        house.
+                        A short, shareable link URL for your open house will be
+                        available by clicking this icon after you finish
+                        creating this open house.
                       </p>
                     </div>
                   </div>

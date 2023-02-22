@@ -18,7 +18,7 @@
           <label
             for="property-url"
             class="block text-sm font-medium text-gray-700"
-            >Realtor.com Listing URL (enter an ACTIVE listing to autofill
+            >Realtor.com Listing URL (enter an ACTIVE, FOR SALE listing to autofill
             details)</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">

@@ -48,7 +48,10 @@
                       >Link Copied!</DialogTitle
                     >
                     <div class="mt-2">
-                      <p class="text-gray-500">This custom open house link has been copied to your clipboard:</p>
+                      <p class="text-gray-500">
+                        The short link below has been copied to your clipboard.
+                        You can share this link to view this open house:
+                      </p>
                       <a
                         class="font-semibold text-gray-700"
                         :href="'link/' + shortSlug"
@@ -75,7 +78,10 @@
                       >Error</DialogTitle
                     >
                     <div class="mt-2">
-                      <p class="text-gray-500">Sorry, there was an issue finding the link to this open house.</p>
+                      <p class="text-gray-500">
+                        Sorry, there was an issue finding the link to this open
+                        house.
+                      </p>
                     </div>
                   </div>
                 </div>

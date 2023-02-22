@@ -53,7 +53,7 @@
                       </p>
                     </div>
                     <div v-if="shortSlug" class="mt-2">
-                      <p class="text-gray-500">Your custom open house link:</p>
+                      <p class="text-gray-500">Your custom open house link to share:</p>
                       <a
                         class="font-semibold text-gray-700"
                         :href="'link/' + shortSlug"

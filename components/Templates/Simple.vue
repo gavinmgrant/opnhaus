@@ -90,6 +90,15 @@
                 <icon name="ph:phone-duotone" class="h-6 w-6" />
               </a>
             </span>
+            <span v-if="acc.agent.website" class="pr-2">
+              <a
+                :href="acc.agent.website"
+                target="_blank"
+                rel="noopener | noreferrer"
+              >
+                <icon name="ph:apple-podcasts-logo-duotone" class="h-6 w-6" />
+              </a>
+            </span>
             <span v-if="acc.agent.facebook" class="pr-2">
               <a
                 :href="acc.agent.facebook"

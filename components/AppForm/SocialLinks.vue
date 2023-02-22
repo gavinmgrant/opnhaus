@@ -11,7 +11,7 @@
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="grid grid-cols-1 gap-4 bg-white px-4 py-5 sm:p-6">
         <div>
-          <label for="instagram" class="block text-sm font-medium text-gray-700"
+          <label for="email" class="block text-sm font-medium text-gray-700"
             >Email</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div>
-          <label for="instagram" class="block text-sm font-medium text-gray-700"
+          <label for="phone" class="block text-sm font-medium text-gray-700"
             >Phone</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
@@ -49,6 +49,27 @@
               @input="$emit('update:phone', $event.target.value)"
               class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="(555) 123-4567"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="website" class="block text-sm font-medium text-gray-700"
+            >Website</label
+          >
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <span
+              class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500"
+            >
+              <icon name="ph:apple-podcasts-logo-duotone" class="w-5 h-5" />
+            </span>
+            <input
+              type="search"
+              name="website"
+              id="website"
+              v-model="state.website"
+              @input="$emit('update:website', $event.target.value)"
+              class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              placeholder="https://agent.com"
             />
           </div>
         </div>
@@ -138,7 +159,7 @@
         </div>
 
         <div>
-          <label for="instagram" class="block text-sm font-medium text-gray-700"
+          <label for="linkdin" class="block text-sm font-medium text-gray-700"
             >Linkedin</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
@@ -159,7 +180,7 @@
           </div>
         </div>
         <div>
-          <label for="instagram" class="block text-sm font-medium text-gray-700"
+          <label for="youtube" class="block text-sm font-medium text-gray-700"
             >Youtube</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
@@ -188,6 +209,7 @@ const props = defineProps([
   "state",
   "email",
   "phone",
+  "website",
   "facebook",
   "instagram",
   "tiktok",

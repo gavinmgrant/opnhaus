@@ -30,6 +30,7 @@
           v-model:state="state"
           v-model:email="data.agent.email"
           v-model:phone="data.agent.phone"
+          v-model:website="data.agent.website"
           v-model:facebook="data.agent.facebook"
           v-model:instagram="data.agent.instagram"
           v-model:tiktok="data.agent.tiktok"
@@ -84,6 +85,7 @@ const agent = {
   image: "",
   email: "",
   phone: "",
+  website: "",
   facebook: "",
   instagram: "",
   tiktok: "",

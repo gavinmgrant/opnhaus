@@ -219,23 +219,6 @@ const props = defineProps({
   },
 });
 
-const metaTitle =
-  props.acc.agent.n + " " + "Open House Landing Page by OpnHaus";
-const metaDescription =
-  "Visit my open House at " +
-  props.acc.ad +
-  " presented by" +
-  props.acc.agent.n +
-  " | Powered by OpnHaus";
-
-useServerSeoMeta({
-  title: metaTitle,
-  ogTitle: metaTitle,
-  description: metaDescription,
-  ogDescription: metaDescription,
-  ogImage: props.acc.ph,
-});
-
 const allLinksAreEmpty = computed(() => {
   return (
     !props.acc.agent.e &&

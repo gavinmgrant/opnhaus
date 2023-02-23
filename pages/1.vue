@@ -15,5 +15,18 @@ const route = useRoute();
 const acc = route.query.data;
 const decodedData = ref({});
 decodedData.value = decodeData(acc);
+
+// TODO: customize meta data per open house landing page
+
+const metaTitle = "OpnHaus | Open House Landing Page";
+// const metaDescription = "Open House Landing Page by OpnHaus";
+
+useServerSeoMeta({
+  title: metaTitle,
+  ogTitle: metaTitle,
+  // description: metaDescription,
+  // ogDescription: metaDescription,
+  // ogImage: decodeData.value.ph,
+});
 </script>
 <style scoped></style>

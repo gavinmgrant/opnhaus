@@ -12,4 +12,5 @@ export default defineNuxtConfig({
     mongodbUri: process.env.MONGODB_URI,
     ga: process.env.GOOGLE_ANALYTICS,
   },
+  ssr: false,
 });

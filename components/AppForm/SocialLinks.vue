@@ -54,7 +54,7 @@
         </div>
         <div>
           <label for="website" class="block text-sm font-medium text-gray-700"
-            >Website</label
+            >Website (this will also make your photo a link)</label
           >
           <div class="mt-1 flex rounded-md shadow-sm">
             <span

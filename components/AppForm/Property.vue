@@ -111,16 +111,32 @@
           <label
             for="listing-photo-url"
             class="block text-sm font-medium text-gray-700"
-            >Listing Photo URL</label
+            >Photo URL</label
           >
           <input
             type="text"
             name="listing-photo-url"
             id="listing-photo-url"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-            placeholder=""
+            placeholder="https://propertyphotourl.com"
             :value="photo"
             @input="$emit('update:photo', $event.target.value)"
+          />
+        </div>
+        <div class="flex-grow col-span-6 sm:col-span-3" v-if="toggleOn">
+          <label
+            for="listing-link"
+            class="block text-sm font-medium text-gray-700"
+            >Listing URL (this will make your listing photo a link, drive traffic to your own site)</label
+          >
+          <input
+            type="text"
+            name="listing-link"
+            id="listing-link"
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            placeholder="https://agent.com/listing"
+            :value="link"
+            @input="$emit('update:link', $event.target.value)"
           />
         </div>
       </div>
@@ -140,6 +156,7 @@ const props = defineProps([
   "address",
   "beds",
   "baths",
+  "link"
 ]);
 const emit = defineEmits([
   "update:property",
@@ -147,6 +164,7 @@ const emit = defineEmits([
   "update:address",
   "update:beds",
   "update:baths",
+  "update:link",
   "update:propertySuccess",
   "update:propertyError",
 ]);

@@ -10,6 +10,7 @@
           v-model:address="data.ad"
           v-model:beds="data.bd"
           v-model:baths="data.ba"
+          v-model:link="data.lk"
           v-model:propertySuccess="messages.propertySuccess"
           v-model:propertyError="messages.propertyError"
         />
@@ -102,6 +103,7 @@ const data = ref({
   ad: "", // property address
   bd: "", // no. of beds
   ba: "", // no. of baths
+  lk: "", // link to the listing
   ti: [], // array of open house times
   agent: state.value,
 });

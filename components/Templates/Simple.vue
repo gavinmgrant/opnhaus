@@ -8,8 +8,24 @@
           <icon name="material-symbols:share" class="h-7 w-7" />
         </button>
       </header>
-      <div v-if="acc.ph" class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg">
+      <div
+        v-if="acc.ph"
+        class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg overflow-hidden"
+      >
+        <a
+          v-if="acc.lk"
+          :href="acc.lk"
+          target="_blank"
+          rel="noopener | noreferrer"
+        >
+          <img
+            :src="acc.ph"
+            alt="Property photo"
+            class="h-full w-full object-cover rounded-t-lg cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:scale-105"
+          />
+        </a>
         <img
+          v-if="!acc.lk"
           :src="acc.ph"
           alt="Property photo"
           class="h-full w-full object-cover rounded-t-lg"
@@ -54,9 +70,23 @@
           v-if="acc.agent.i"
           class="h-20 w-20 rounded-full overflow-hidden flex-none mr-4"
         >
+          <a
+            v-if="acc.agent.w"
+            :href="acc.agent.w"
+            target="_blank"
+            rel="noopener | noreferrer"
+          >
+            <img
+              :src="acc.agent.i"
+              alt="Agent photo"
+              class="h-full w-full object-cover cursor-pointer overflow-hidden transition-all duration-300 ease-in-out hover:scale-105"
+            />
+          </a>
+
           <img
+            v-if="!acc.agent.w"
             :src="acc.agent.i"
-            alt="Agent name"
+            alt="Agent photo"
             class="h-full w-full object-cover"
           />
         </div>

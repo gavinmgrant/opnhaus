@@ -14,8 +14,7 @@
     "@vueuse/core": "^9.12.0",
     "@vueuse/nuxt": "^9.12.0",
     "nuxt": "^3.1.1",
-    "nuxt-icon": "^0.2.10",
-    "vue-gtag-next": "^1.14.0"
+    "nuxt-icon": "^0.2.10"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.8",
@@ -27,7 +26,6 @@
     "mongoose": "^6.9.2",
     "nanoid": "^4.0.1",
     "nitropack": "^2.2.2",
-    "vue-gtag": "^2.0.1",
     "vuedraggable": "^4.1.0"
   }
 }

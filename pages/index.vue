@@ -76,7 +76,23 @@ useHead({
         "An app for real estate agents to create beautiful landing pages for their open houses. Design and developed by Gavin Grant.",
     },
   ],
+  script: [
+    {
+      type: "text/javascript",
+      src: "https://www.googletagmanager.com/gtag/js?id=G-ZZK0R9H2LV",
+      async: true,
+    },
+  ],
 });
+
+// Google Analytics
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
+
+gtag("config", "G-ZZK0R9H2LV");
 
 const agent = {
   u: "", // agent profile URL

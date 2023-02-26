@@ -197,7 +197,7 @@
         rel="noopener | noreferrer"
       >
         <button
-          class="text-sm px-4 py-2 rounded-full border-solid border-2 border-slate-800"
+          class="text-sm px-4 py-2 rounded-full border-solid border-2 border-slate-800 hover:bg-slate-800 hover:text-white transition-all duration-300"
         >
           Powered by <span class="font-semibold">OpnHaus</span>
         </button>

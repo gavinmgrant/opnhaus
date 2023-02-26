@@ -16,12 +16,12 @@
           <button class="absolute top-2 -left-8">
             <icon
               name="radix-icons:drag-handle-dots-2"
-              class="h-6 w-6 text-slate-700 drag-handle"
+              class="h-6 w-6 text-slate-800 drag-handle"
             />
           </button>
           <button
             @click="removeTime(time)"
-            class="hidden group-hover:flex items-center justify-center h-6 w-6 rounded-full bg-slate-700 text-white absolute -right-3 -top-3"
+            class="hidden group-hover:flex items-center justify-center h-6 w-6 rounded-full bg-slate-800 text-white absolute -right-3 -top-3"
           >
             <icon name="fluent:dismiss-24-regular" class="h-5 w-5" />
           </button>

@@ -41,13 +41,13 @@
         />
       </div>
       <div
-        class="relative bottom-0 left-0 w-full border-t bg-white flex items-center justify-between p-4"
+        class="relative bottom-0 left-0 w-full border-t bg-white flex items-center justify-between p-3 md:p-4"
       >
         <logo />
         <button
           @click="modalOn = true"
           :disabled="data.ti.length < 1 || !data.ad || !state.n"
-          class="h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-70 disabled:hover:cursor-not-allowed bg-gradient-to-r from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
+          class="h-10 md:h-12 flex items-center space-x-3 px-4 border-r text-md font-semibold text-white rounded-full disabled:opacity-70 disabled:hover:cursor-not-allowed bg-gradient-to-r from-indigo-500 to-pink-500 opacity-90 hover:opacity-100 transitions-all duration-300"
         >
           <span>Create Link</span>
           <icon name="fluent:send-16-filled" class="h-5 w-5" />

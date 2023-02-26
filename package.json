@@ -23,7 +23,7 @@
     "date-fns": "^2.29.3",
     "floating-vue": "^2.0.0-beta.20",
     "js-base64": "^3.7.5",
-    "mongoose": "^6.9.2",
+    "mongoose": "^6.10.0",
     "nanoid": "^4.0.1",
     "nitropack": "^2.2.2",
     "vuedraggable": "^4.1.0"

@@ -5,6 +5,7 @@ export default async (_nitroApp: Nitro) => {
   const config = useRuntimeConfig();
 
   try {
+    await mongoose.set("strictQuery", true);
     await mongoose.connect(config.mongodbUri);
   } catch (e) {
     console.log("Error connecting to MongoDB: ", e);

@@ -47,12 +47,24 @@
           </li>
         </ul>
 
-        <button
-          class="mt-6 h-12 hidden md:flex items-center space-x-3 px-4 border-solid border-slate-800 border-2 text-md font-semibold text-slate-800 hover:text-white hover:bg-slate-800 transition-all duration-300 rounded-full"
-        >
-          <NuxtLink to="/create">Get Started</NuxtLink>
-          <icon name="fluent:send-16-filled" class="h-5 w-5" />
-        </button>
+        <NuxtLink to="/create">
+          <button
+            @click="loading = true"
+            class="mt-6 h-12 hidden md:flex items-center px-4 border-solid border-slate-800 border-2 text-md font-semibold text-slate-800 hover:text-white hover:bg-slate-800 transition-all duration-300 rounded-full"
+          >
+            <span class="mr-3">Get Started</span>
+            <icon
+              v-if="!loading"
+              name="fluent:send-16-filled"
+              class="h-5 w-5"
+            />
+            <icon
+              v-if="loading"
+              name="icon-park-outline:loading-one"
+              class="animate-spin w-5 h-5"
+            />
+          </button>
+        </NuxtLink>
       </div>
     </section>
   </body>
@@ -60,12 +72,19 @@
     class="fixed bottom-0 left-0 w-screen bg-white p-3 md:p-4 h-[65px] md:h-[81px] flex justify-between items-center border-t"
   >
     <logo />
-    <button
-      class="md:hidden h-10 flex items-center space-x-3 px-4 border-solid border-slate-800 border-2 text-md font-semibold text-slate-800 hover:text-white hover:bg-slate-800 transition-all duration-300 rounded-full"
-    >
-      <NuxtLink to="/create">Get Started</NuxtLink>
-      <icon name="fluent:send-16-filled" class="h-5 w-5" />
-    </button>
+    <NuxtLink @click="loading = true" to="/create">
+      <button
+        class="md:hidden h-10 flex items-center px-4 border-solid border-slate-800 border-2 text-md font-semibold text-slate-800 hover:text-white hover:bg-slate-800 transition-all duration-300 rounded-full"
+      >
+        <span class="mr-3">Get Started</span>
+        <icon v-if="!loading" name="fluent:send-16-filled" class="h-5 w-5" />
+        <icon
+          v-if="loading"
+          name="icon-park-outline:loading-one"
+          class="animate-spin w-5 h-5"
+        />
+      </button>
+    </NuxtLink>
   </footer>
 </template>
 <script setup>
@@ -86,6 +105,8 @@ useHead({
     },
   ],
 });
+
+const loading = ref(false);
 
 // Google Analytics
 window.dataLayer = window.dataLayer || [];

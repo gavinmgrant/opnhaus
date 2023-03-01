@@ -27,6 +27,8 @@
           v-model:agentError="messages.agentError"
         />
         <app-form-hr />
+        <app-form-ad />
+        <app-form-hr />
         <app-form-social-links
           v-model:state="state"
           v-model:email="data.agent.e"

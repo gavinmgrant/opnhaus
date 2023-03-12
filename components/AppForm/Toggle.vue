@@ -1,14 +1,11 @@
 <template>
   <div class="absolute right-6 mt-2">
-    <div class="flex flex-row justify-between toggle">
-      <div class="flex items-center cursor-pointer">
-        <label
-          for="toggle"
-          class="mr-3 dark:text-white text-gray-700 font-medium text-sm"
-        >
+    <div class="flex flex-row justify-between">
+      <div class="flex items-center">
+        <label for="toggle" class="mr-3 text-gray-700 font-medium text-sm">
           {{ text }}
         </label>
-        <div class="relative">
+        <div class="relative cursor-pointer">
           <input
             type="checkbox"
             name="toggle"
@@ -17,10 +14,10 @@
             :checked="toggleOn"
           />
           <div
-            class="block border-[1px] dark:border-white border-gray-700 w-12 h-7 rounded-full"
+            class="dotbackground block border-[1px] border-gray-700 w-12 h-7 rounded-full"
           ></div>
           <div
-            class="dot absolute left-1 top-1 dark:bg-white bg-gray-700 w-5 h-5 rounded-full transition"
+            class="dot absolute left-1 top-1 bg-gray-700 w-5 h-5 rounded-full transition"
           ></div>
         </div>
       </div>
@@ -33,5 +30,9 @@ const props = defineProps(["text", "toggleOn"]);
 <style>
 input:checked ~ .dot {
   transform: translateX(100%);
+  background-color: #fff;
+}
+input:checked ~ .dotbackground {
+  background-color: #374151;
 }
 </style>

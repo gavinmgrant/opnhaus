@@ -25,7 +25,13 @@
             <icon
               name="material-symbols:check-circle-outline"
               class="w-6 h-6 mr-2 shrink-0"
-            />Get a unique URL to promote open houses on social.
+            />Get a unique URL to promote open houses.
+          </li>
+          <li class="flex items-center">
+            <icon
+              name="material-symbols:check-circle-outline"
+              class="w-6 h-6 mr-2 shrink-0"
+            />Use as a link in bio on social media.
           </li>
           <li class="flex items-center">
             <icon

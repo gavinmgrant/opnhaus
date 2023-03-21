@@ -1,7 +1,7 @@
 <template>
   <div class="lg:grid lg:grid-cols-3 lg:gap-6">
     <div class="lg:col-span-1">
-      <div class="px-4 sm:px-0 sticky top-0">
+      <div class="px-0 sticky top-0">
         <h3 class="text-xl font-semibold leading-6 text-gray-900">
           {{ title }}
         </h3>

@@ -55,6 +55,7 @@
           <icon name="fluent:send-16-filled" class="h-5 w-5" />
         </button>
       </div>
+      <app-form-scroll-down />
     </div>
     <app-form-preview :data="data" />
   </div>

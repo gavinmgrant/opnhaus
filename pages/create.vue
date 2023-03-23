@@ -1,8 +1,9 @@
 <template>
   <div class="h-screen grid grid-cols-3 divide-x">
     <div
-      class="col-span-3 lg:col-span-2 h-screen flex flex-col bg-slate-100 z-20"
+      class="relative col-span-3 lg:col-span-2 h-screen flex flex-col bg-slate-100 z-20"
     >
+      <app-form-scroll-down />
       <div class="flex-1 overflow-y-auto p-4">
         <app-form-property
           v-model:property="data.pr"
@@ -55,7 +56,6 @@
           <icon name="fluent:send-16-filled" class="h-5 w-5" />
         </button>
       </div>
-      <app-form-scroll-down />
     </div>
     <app-form-preview :data="data" />
   </div>

@@ -8,12 +8,9 @@
           <icon name="material-symbols:share" class="h-7 w-7" />
         </button>
       </header>
-      <div
-        v-if="acc.ph"
-        class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg overflow-hidden"
-      >
+      <div class="w-full mb-2 rounded-lg bg-slate-50 shadow-lg overflow-hidden">
         <a
-          v-if="acc.lk"
+          v-if="acc.lk && acc.ph"
           :href="acc.lk"
           target="_blank"
           rel="noopener | noreferrer"
@@ -25,7 +22,7 @@
           />
         </a>
         <img
-          v-if="!acc.lk"
+          v-if="!acc.lk && acc.ph"
           :src="acc.ph"
           alt="Property photo"
           class="h-full w-full object-cover rounded-t-lg"
@@ -35,17 +32,21 @@
             {{ acc.ad }}
           </h1>
           <div
-            v-if="acc.bd && acc.ba"
+            v-if="acc.bd || acc.ba"
             class="flex items-center justify-center text-md font-medium mb-1"
           >
-            <icon name="material-symbols:bedroom-child" class="h-8 w-8" /><span
-              class="ml-1"
-              >{{ acc.bd }} bed</span
-            >
-            <icon name="material-symbols:bathroom" class="h-8 w-8 ml-4" /><span
-              class="ml-1"
-              >{{ acc.ba }} bath</span
-            >
+            <div v-if="acc.bd">
+              <icon
+                name="material-symbols:bedroom-child"
+                class="h-8 w-8"
+              /><span class="ml-1">{{ acc.bd }} bed</span>
+            </div>
+            <div v-if="acc.ba">
+              <icon
+                name="material-symbols:bathroom"
+                class="h-8 w-8 ml-4"
+              /><span class="ml-1">{{ acc.ba }} bath</span>
+            </div>
           </div>
         </div>
       </div>
@@ -217,7 +218,7 @@ const props = defineProps({
     type: String,
     required: false,
   },
-});
+})
 
 const allLinksAreEmpty = computed(() => {
   return (
@@ -230,11 +231,11 @@ const allLinksAreEmpty = computed(() => {
     !props.acc.agent.tw &&
     !props.acc.agent.li &&
     !props.acc.agent.yt
-  );
-});
+  )
+})
 
-const modalOn = ref(false);
-const shortSlug = ref("");
+const modalOn = ref(false)
+const shortSlug = ref("")
 
 const getShortSlug = async () => {
   await $fetch("/api/shorten", {
@@ -242,18 +243,18 @@ const getShortSlug = async () => {
     query: { id: `1?data=${props.longSlug}` },
   }).then((res) => {
     if (res === "Does not exist.") {
-      shortSlug.value = "";
+      shortSlug.value = ""
     } else {
-      shortSlug.value = res;
+      shortSlug.value = res
     }
-  });
-};
+  })
+}
 
-getShortSlug();
+getShortSlug()
 
 const copyToClipboard = () => {
-  modalOn.value = true;
-  navigator.clipboard.writeText(`opn.haus/link/${shortSlug.value}`);
-};
+  modalOn.value = true
+  navigator.clipboard.writeText(`opn.haus/link/${shortSlug.value}`)
+}
 </script>
 <style scoped></style>

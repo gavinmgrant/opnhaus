@@ -14,7 +14,7 @@
     </template>
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-        <div class="flex-grow col-span-6 sm:col-span-3 mb-8">
+        <!-- <div class="flex-grow col-span-6 sm:col-span-3 mb-8">
           <label
             for="property-url"
             class="block text-sm font-medium text-gray-700"
@@ -62,7 +62,7 @@
             :toggleOn="toggleOn"
             @click="toggleOn = !toggleOn"
           />
-        </div>
+        </div> -->
 
         <div class="col-span-6 sm:col-span-3" v-if="toggleOn">
           <label for="name" class="block text-sm font-medium text-gray-700"
@@ -146,7 +146,7 @@
 <script setup>
 import { validateUrl } from "../../utils/validateUrl";
 
-const toggleOn = ref(false);
+const toggleOn = ref(true);
 const loading = ref(false);
 const props = defineProps([
   "property",

@@ -102,6 +102,10 @@ useHead({
       content:
         "An app for real estate agents to create beautiful landing pages for their open houses. Design and developed by Gavin Grant.",
     },
+    {
+      name: "google-adsense-account",
+      content: "ca-pub-9582285765017644",
+    },
   ],
   script: [
     {
@@ -110,16 +114,16 @@ useHead({
       async: true,
     },
   ],
-});
+})
 
-const loading = ref(false);
+const loading = ref(false)
 
 // Google Analytics
-window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || []
 function gtag() {
-  dataLayer.push(arguments);
+  dataLayer.push(arguments)
 }
-gtag("js", new Date());
+gtag("js", new Date())
 
-gtag("config", "G-ZZK0R9H2LV");
+gtag("config", "G-ZZK0R9H2LV")
 </script>
